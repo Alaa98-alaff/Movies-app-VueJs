@@ -5,7 +5,9 @@
   />
 
   <header class="header">
-    <h1 class="header__logo">Movies.Vue</h1>
+    <h1 class="header__logo">
+      <span class="movies">Movies</span>.<span class="vue">Vue</span>
+    </h1>
     <div class="search-container">
       <input
         type="text"
@@ -22,7 +24,7 @@
 
 <style lang="scss">
 .header {
-  margin: 20px 65px 0px 65px;
+  margin: 10px 70px 0px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,6 +32,17 @@
   &__logo {
     margin: 0;
     padding: 0;
+    &:hover {
+      cursor: pointer;
+    }
+
+    .movies {
+      color: rgb(179, 60, 60);
+    }
+
+    .vue {
+      color: rgb(61, 61, 114);
+    }
   }
 }
 
