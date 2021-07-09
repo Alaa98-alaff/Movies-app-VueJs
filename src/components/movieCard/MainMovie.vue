@@ -1,22 +1,26 @@
 <template>
   <main class="main-movie">
     <div class="trial">
-      <img class="trial__image" :src="result.Poster" :alt="result.Title" />
+      <img
+        class="trial__image"
+        :src="movieSearched.Poster"
+        :alt="movieSearched.Title"
+      />
     </div>
 
     <div class="titles">
       <div class="titles-container">
-        <h1 class="titles__main-title">{{ result.Title }}</h1>
-        <p class="titles__year">{{ result.Year }}</p>
+        <h1 class="titles__main-title">{{ movieSearched.Title }}</h1>
+        <p class="titles__year">{{ movieSearched.Year }}</p>
         <p class="titles__runtime">
-          {{ result.Runtime }} |
-          <span class="titles__category">{{ result.Genre }}</span>
+          {{ movieSearched.Runtime }} |
+          <span class="titles__category">{{ movieSearched.Genre }}</span>
         </p>
         <div class="rating-container">
           <i class="rating-container__star fas fa-star fa-2x"></i>
           <p>
             <strong class="rating-container__rate">{{
-              result.imdbRating
+              movieSearched.imdbRating
             }}</strong
             >/ 10
           </p>
@@ -24,13 +28,11 @@
           <i class="rating-container__imdb fab fa-imdb fa-3x"></i>
         </div>
         <p class="titles__summary">
-          {{ result.Plot }}
+          {{ movieSearched.Plot }}
         </p>
       </div>
       <div class="buttons">
-        <button class="buttons__btn trial" @click="$emit('clickedTrail')">
-          Watch trial
-        </button>
+        <button class="buttons__btn trial">Watch trial</button>
         <button class="buttons__btn move">Watch Movie</button>
       </div>
     </div>
@@ -38,34 +40,14 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
+import { onBeforeMount, ref } from "vue";
 import axios from "axios";
 export default {
-  props: { movieNamed: Function, callFunction: Function },
+  props: ["movieSearched"],
   emits: ["clickedTrail"],
 
-  setup(props) {
-    // async function data in the result;
-    const result = ref({});
-
-    function asyncMovie() {
-      onMounted(async () => {
-        try {
-          const res = await axios.get(
-            `https://www.omdbapi.com/?apikey=9a933189&t=${props.movieNamed()}`
-          );
-
-          const data = res.data;
-          console.log(data);
-          return (result.value = data);
-        } catch (error) {}
-      });
-    }
-    console.log(result);
-    console.log(result._rawValue);
-    asyncMovie();
-
-    return { result };
+  setup() {
+    return {};
   },
 };
 </script>

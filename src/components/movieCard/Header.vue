@@ -3,12 +3,11 @@
     href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
     rel="stylesheet"
   />
-
   <header class="header">
     <h1 class="header__logo">
       <span class="movies">Movies</span>.<span class="vue">Vue</span>
     </h1>
-    <form v-on:submit.prevent="searchMovie">
+    <form @submit.prevent="searchMovie()">
       <div class="search-container">
         <input
           v-model="movieSearch"
@@ -32,11 +31,7 @@
     </form>
   </header>
 
-  <MainMovieComponent
-    :movieNamed="searchMovie"
-    :callFunction="callMovies"
-    @clickedTrail="testEmits"
-  ></MainMovieComponent>
+  <MainMovieComponent :movieSearched="movie"></MainMovieComponent>
 </template>
 
 <script>
@@ -45,27 +40,37 @@ import MainMovieComponent from "./MainMovie.vue";
 
 export default {
   components: { MainMovieComponent },
-  emits: ["change-title"],
 
   setup() {
     let movieSearch = ref("");
+    let movie = ref({});
 
-    function searchMovie() {
-      let movieNameSplited = movieSearch.value.split(" ").join("+");
-      console.log("test movie name", movieNameSplited);
-      return "f9";
-      return movieNameSplited;
-    }
+    const searchMovie = () => {
+      // let movieNameSplited = movieSearch.value.split(" ").join("+");
+      // console.log("test movie name", movieNameSplited);
+      // return "f9";
+      // return movieNameSplited;
+
+      if (movieSearch.value != "") {
+        let movieNameSplited = movieSearch.value.split(" ").join("+");
+
+        fetch(`https://www.omdbapi.com/?apikey=9a933189&t=${movieNameSplited}}`)
+          .then((response) => response.json())
+          .then((data) => {
+            movie.value = data;
+            console.log(data);
+            movieSearch.value = "";
+          });
+      } else {
+        console.log("search fun dont work");
+      }
+    };
 
     function callMovies() {
-      console.log("call movie");
+      // if (movieSearch.value != "") console.log(movieSearch.value);
     }
 
-    function testEmits() {
-      console.log("Test Done");
-    }
-
-    return { searchMovie, movieSearch, callMovies, testEmits };
+    return { searchMovie, movieSearch, callMovies, movie };
   },
 };
 </script>
@@ -98,7 +103,7 @@ export default {
 .search-container {
   background: $logo-red-color;
   height: 30px;
-  border-radius: 20px;
+  border-radius: 40px;
   padding: 10px 20px;
   display: flex;
   justify-content: center;

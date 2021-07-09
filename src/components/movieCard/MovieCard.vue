@@ -7,11 +7,22 @@
     />
     <div class="content">
       <HeaderComponent></HeaderComponent>
-      <!-- <MainMovieComponent></MainMovieComponent> -->
       <NewMovies></NewMovies>
     </div>
   </div>
 </template>
+
+<script>
+import HeaderComponent from "./Header.vue";
+import NewMovies from "./NewMovies.vue";
+
+export default {
+  components: { HeaderComponent, NewMovies },
+  setup() {
+    return {};
+  },
+};
+</script>
 
 <style lang="scss">
 * {
@@ -37,15 +48,3 @@
   position: relative;
 }
 </style>
-
-<script>
-import HeaderComponent from "./Header.vue";
-import NewMovies from "./NewMovies.vue";
-
-export default {
-  components: { HeaderComponent, NewMovies },
-  setup() {
-    return {};
-  },
-};
-</script>

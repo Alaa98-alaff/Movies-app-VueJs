@@ -6,12 +6,11 @@
 
 <script>
 import { useRoute } from "vue-router";
-import HeaderComponent from "./components/Header.vue";
-import NewMovies from "./components/NewMovies.vue";
-import MovieCard from "./components/MovieCard.vue";
+
+import MovieCard from "./components/movieCard/MovieCard.vue";
 
 export default {
-  components: { HeaderComponent, NewMovies, MovieCard },
+  components: { MovieCard },
   setup() {
     return {};
   },
