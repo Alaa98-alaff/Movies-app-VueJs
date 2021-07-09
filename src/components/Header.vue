@@ -8,46 +8,95 @@
     <h1 class="header__logo">
       <span class="movies">Movies</span>.<span class="vue">Vue</span>
     </h1>
-    <div class="search-container">
-      <input
-        type="text"
-        name="search"
-        placeholder="Search for Movie"
-        class="search-input"
-      />
-      <a href="#" class="search-btn">
-        <i class="fas fa-search"></i>
-      </a>
-    </div>
+    <form v-on:submit.prevent="searchMovie">
+      <div class="search-container">
+        <input
+          v-model="movieSearch"
+          type="text"
+          name="search"
+          placeholder="Search for Movie"
+          class="search-input"
+        />
+
+        <a
+          v-on:click="
+            searchMovie();
+            callMovies();
+          "
+          href="#"
+          class="search-btn"
+        >
+          <i class="fas fa-search"></i>
+        </a>
+      </div>
+    </form>
   </header>
+
+  <MainMovieComponent
+    :movieNamed="searchMovie"
+    :callFunction="callMovies"
+    @clickedTrail="testEmits"
+  ></MainMovieComponent>
 </template>
+
+<script>
+import { ref } from "vue";
+import MainMovieComponent from "./MainMovie.vue";
+
+export default {
+  components: { MainMovieComponent },
+  emits: ["change-title"],
+
+  setup() {
+    let movieSearch = ref("");
+
+    function searchMovie() {
+      let movieNameSplited = movieSearch.value.split(" ").join("+");
+      console.log("test movie name", movieNameSplited);
+      return "f9";
+      return movieNameSplited;
+    }
+
+    function callMovies() {
+      console.log("call movie");
+    }
+
+    function testEmits() {
+      console.log("Test Done");
+    }
+
+    return { searchMovie, movieSearch, callMovies, testEmits };
+  },
+};
+</script>
 
 <style lang="scss">
 .header {
-  margin: 10px 70px 0px 20px;
+  margin: 30px 70px 0px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   &__logo {
+    display: flex;
     margin: 0;
-    padding: 0;
+
     &:hover {
       cursor: pointer;
     }
 
     .movies {
-      color: rgb(179, 60, 60);
+      color: $logo-red-color;
     }
 
     .vue {
-      color: rgb(61, 61, 114);
+      color: $logo-blue-color;
     }
   }
 }
 
 .search-container {
-  background: #fff;
+  background: $logo-red-color;
   height: 30px;
   border-radius: 20px;
   padding: 10px 20px;
@@ -77,7 +126,7 @@
 }
 
 .search-container .search-btn .fas {
-  color: #e63e3e;
+  color: rgb(173, 172, 172);
 }
 
 .search-container:hover {

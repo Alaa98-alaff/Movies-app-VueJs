@@ -1,17 +1,19 @@
 <template>
-  <HeaderComponent></HeaderComponent>
-  <MainMovieComponent></MainMovieComponent>
+  <!-- <HeaderComponent></HeaderComponent>
+  <new-movies></new-movies> -->
+  <MovieCard></MovieCard>
 </template>
 
 <script>
 import { useRoute } from "vue-router";
 import HeaderComponent from "./components/Header.vue";
-import MainMovieComponent from "./components/MainMovie.vue";
+import NewMovies from "./components/NewMovies.vue";
+import MovieCard from "./components/MovieCard.vue";
+
 export default {
-  components: { HeaderComponent, MainMovieComponent },
+  components: { HeaderComponent, NewMovies, MovieCard },
   setup() {
-    let route = useRoute();
-    return { route };
+    return {};
   },
 };
 </script>

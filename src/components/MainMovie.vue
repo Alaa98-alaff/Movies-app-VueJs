@@ -28,7 +28,9 @@
         </p>
       </div>
       <div class="buttons">
-        <button class="buttons__btn trial">Watch trial</button>
+        <button class="buttons__btn trial" @click="$emit('clickedTrail')">
+          Watch trial
+        </button>
         <button class="buttons__btn move">Watch Movie</button>
       </div>
     </div>
@@ -39,22 +41,30 @@
 import { onMounted, ref } from "vue";
 import axios from "axios";
 export default {
-  setup() {
-    // Api result for the main movie
+  props: { movieNamed: Function, callFunction: Function },
+  emits: ["clickedTrail"],
+
+  setup(props) {
+    // async function data in the result;
     const result = ref({});
 
-    onMounted(async () => {
-      try {
-        const res = await axios.get(
-          // "https://www.omdbapi.com/?apikey=9a933189&t=Miracle+in+Cell+No.+7"
-          "https://www.omdbapi.com/?apikey=9a933189&t=f9"
-        );
-        result.value = res.data;
-        console.log(res.data);
-      } catch (error) {
-        console.error(error);
-      }
-    });
+    function asyncMovie() {
+      onMounted(async () => {
+        try {
+          const res = await axios.get(
+            `https://www.omdbapi.com/?apikey=9a933189&t=${props.movieNamed()}`
+          );
+
+          const data = res.data;
+          console.log(data);
+          return (result.value = data);
+        } catch (error) {}
+      });
+    }
+    console.log(result);
+    console.log(result._rawValue);
+    asyncMovie();
+
     return { result };
   },
 };
@@ -77,6 +87,7 @@ export default {
 }
 
 .titles {
+  color: #fff;
   height: 400px;
   display: flex;
   flex-direction: column;
