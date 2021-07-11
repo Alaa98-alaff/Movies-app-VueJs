@@ -2,7 +2,9 @@
   <div class="background">
     <!-- <img class="background__image" src="" alt="" /> -->
     <div class="content">
-      <HeaderComponent @SearchData="insertDataToChild"></HeaderComponent>
+      <HeaderComponent
+        @searchedMovieID="insertMovieIDToChild"
+      ></HeaderComponent>
       <MainComponent :searchedMovieID="incomeMovieID"></MainComponent>
       <NewMoviesComponent></NewMoviesComponent>
     </div>
@@ -20,14 +22,14 @@ export default {
   components: { HeaderComponent, NewMoviesComponent, MainComponent },
 
   setup() {
-    let incomeMovieID = ref({});
+    let incomeMovieID = ref(793798);
 
-    function insertDataToChild(data) {
-      console.log(data);
+    // Movie ID Coming from Header ,and send as props to main
+    function insertMovieIDToChild(data) {
+      incomeMovieID.value = data;
     }
 
-    console.log(incomeMovieID.value, "TEST");
-    return { insertDataToChild, incomeMovieID };
+    return { insertMovieIDToChild, incomeMovieID };
   },
 };
 </script>

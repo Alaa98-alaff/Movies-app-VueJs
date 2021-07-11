@@ -19,19 +19,14 @@
           class="search-input"
         />
 
-        <a
-          v-on:click="testApi()"
-          @click="$emit('SearchData', newestMovieID)"
-          href="#"
-          class="search-btn"
-        >
+        <a v-on:click="testApi()" href="#" class="search-btn">
           <i class="fas fa-search"></i>
         </a>
       </div>
     </form>
   </header>
 
-  <MainMovieComponent :movieSearched="newestMovieinfo"></MainMovieComponent>
+  <!-- <MainMovieComponent :movieSearched="newestMovieinfo"></MainMovieComponent> -->
 </template>
 
 <script>
@@ -40,8 +35,8 @@ import MainMovieComponent from "./MainMovie.vue";
 
 export default {
   components: { MainMovieComponent },
-  emits: ["SearchData"],
-  setup() {
+  emits: ["searchedMovieID"],
+  setup(props, { emit }) {
     let movieSearch = ref("superman");
     let movie = ref({});
 
@@ -49,7 +44,7 @@ export default {
     let hightRatedMovie = ref(0);
     let newestMovieinfo = ref({});
 
-    const testApi = async () => {
+    const testApi = async (event) => {
       let movieNameSplited = movieSearch.value.split(" ").join("+");
 
       await fetch(
@@ -59,44 +54,19 @@ export default {
       )
         .then((response) => response.json())
         .then((data) => {
-          // console.log(data.results);
+          console.log(data.results[data.results.length - 1].id);
 
-          // find the newest movie hightRated by searching
-          data.results.forEach((movie) => {
-            // console.log(movie);
-            // if (movie.vote_average > hightRatedMovie.value) {
-            hightRatedMovie.value = movie.vote_average;
-            // }
-          });
+          newestMovieID.value = data.results[data.results.length - 1].id;
 
-          // find the newest movie information by searching
-          data.results.forEach((movie) => {
-            if (movie.vote_average === hightRatedMovie.value) {
-              newestMovieID.value = movie.id;
-            }
-          });
+          // Send the Movie ID to the MainComponent
+          emit("searchedMovieID", data.results[data.results.length - 1].id);
         });
 
       // console.log(hightRatedMovie.value);
       // console.log(newestMovieID.value);
-      // getMovieById();
     };
 
-    // const getMovieById = async () => {
-    //   // console.log(newestMovieID.value);
-    //   await fetch(
-    //     `https://api.themoviedb.org/3/movie/${newestMovieID.value}?api_key=${
-    //       import.meta.env.VITE_API_KEY
-    //     }`
-    //   )
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       newestMovieinfo.value = data;
-    //       // console.log(data);
-    //     });
-    // };
-
-    testApi();
+    // testApi();
 
     return {
       movieSearch,

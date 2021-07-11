@@ -1,39 +1,24 @@
 <template>
   <main class="main-movie">
     <div class="trial">
-      <img
-        class="trial__image"
-        :src="movieSearched.Poster"
-        :alt="movieSearched.Title"
-      />
+      <img class="trial__image" />
     </div>
 
     <div class="titles">
       <div class="titles-container">
-        <h1 class="titles__main-title">{{ movieSearched.title }}</h1>
-        <p class="titles__year">
-          {{ movieSearched.release_date }}
-        </p>
+        <h1 class="titles__main-title">{{ movieDetails.title }}</h1>
+        <p class="titles__year">year</p>
         <p class="titles__runtime">
-          {{ movieSearched.runtime }} min |
-          <span class="titles__category">
-            {{ movieSearched.Genre }}
-          </span>
+          runtime min |
+          <span class="titles__category"> gener </span>
         </p>
         <div class="rating-container">
           <i class="rating-container__star fas fa-star fa-2x"></i>
-          <p>
-            <strong class="rating-container__rate">{{
-              movieSearched.vote_average
-            }}</strong
-            >/ 10
-          </p>
+          <p><strong class="rating-container__rate">vote</strong>/ 10</p>
 
           <i class="rating-container__imdb fab fa-imdb fa-3x"></i>
         </div>
-        <p class="titles__summary">
-          {{ movieSearched.Plot }}
-        </p>
+        <p class="titles__summary">summary</p>
       </div>
       <div class="buttons">
         <button class="buttons__btn trial">Watch trial</button>
@@ -44,30 +29,30 @@
 </template>
 
 <script>
-import { onBeforeMount, ref } from "vue";
-import axios from "axios";
+import { onBeforeMount, ref, watch, watchEffect } from "vue";
+
 export default {
-  props: ["movieSearched"],
-  emits: ["clickedTrail"],
+  props: ["searchedMovieID"],
 
-  setup() {
-    let movieID = ref();
+  setup(props) {
+    let movieDetails = ref({});
 
-    const getMovieById = async () => {
-      // console.log(newestMovieID.value);
+    // watch and update the movie when movie id change
+
+    async function getMovieInfoWithID() {
       await fetch(
-        `https://api.themoviedb.org/3/movie/${newestMovieID.value}?api_key=${
+        `https://api.themoviedb.org/3/movie/${props.searchedMovieID}?api_key=${
           import.meta.env.VITE_API_KEY
         }`
       )
         .then((response) => response.json())
-        .then((data) => {
-          newestMovieinfo.value = data;
-          // console.log(data);
-        });
-    };
+        .then((data) => (movieDetails.value = data));
+    }
+    getMovieInfoWithID();
 
-    return { getMovieById, movieID };
+    watchEffect(getMovieInfoWithID);
+
+    return { movieDetails, getMovieInfoWithID };
   },
 };
 </script>

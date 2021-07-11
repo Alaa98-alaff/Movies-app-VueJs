@@ -26,13 +26,13 @@ export default {
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log(data.results);
+          // console.log(data.results);
 
           for (let i = randomOne; i < randomOne + 5; i++) {
             newMoviesObj.value.push(data.results[i]);
           }
         });
-      console.log(newMoviesObj.value);
+      // console.log(newMoviesObj.value);
     };
 
     newTopMovies();
