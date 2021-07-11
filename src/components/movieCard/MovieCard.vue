@@ -3,7 +3,7 @@
     <!-- <img class="background__image" src="" alt="" /> -->
     <div class="content">
       <HeaderComponent @SearchData="insertDataToChild"></HeaderComponent>
-      <!-- <MainComponent></MainComponent> -->
+      <MainComponent :searchedMovieID="incomeMovieID"></MainComponent>
       <NewMoviesComponent></NewMoviesComponent>
     </div>
   </div>
@@ -20,14 +20,14 @@ export default {
   components: { HeaderComponent, NewMoviesComponent, MainComponent },
 
   setup() {
-    let incomeMovieData = ref({});
+    let incomeMovieID = ref({});
 
     function insertDataToChild(data) {
       console.log(data);
     }
 
-    console.log(incomeMovieData.value, "TEST");
-    return { insertDataToChild, incomeMovieData };
+    console.log(incomeMovieID.value, "TEST");
+    return { insertDataToChild, incomeMovieID };
   },
 };
 </script>
