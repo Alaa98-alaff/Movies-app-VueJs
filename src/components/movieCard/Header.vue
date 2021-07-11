@@ -4,10 +4,12 @@
     rel="stylesheet"
   />
   <header class="header">
-    <h1 class="header__logo">
-      <span class="movies">Movies</span>.<span class="vue">Vue</span>
-    </h1>
-    <form @submit.prevent="searchMovie()">
+    <router-link to="/">
+      <h1 class="header__logo">
+        <span class="movies">Movies.</span><span class="vue">Vue</span>
+      </h1>
+    </router-link>
+    <form @submit.prevent="testApi()">
       <div class="search-container">
         <input
           v-model="movieSearch"
@@ -18,10 +20,8 @@
         />
 
         <a
-          v-on:click="
-            searchMovie();
-            callMovies();
-          "
+          v-on:click="testApi()"
+          @click="$emit('SearchData', newestMovieID)"
           href="#"
           class="search-btn"
         >
@@ -31,46 +31,81 @@
     </form>
   </header>
 
-  <MainMovieComponent :movieSearched="movie"></MainMovieComponent>
+  <MainMovieComponent :movieSearched="newestMovieinfo"></MainMovieComponent>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import MainMovieComponent from "./MainMovie.vue";
 
 export default {
   components: { MainMovieComponent },
-
+  emits: ["SearchData"],
   setup() {
-    let movieSearch = ref("");
+    let movieSearch = ref("superman");
     let movie = ref({});
 
-    const searchMovie = () => {
-      // let movieNameSplited = movieSearch.value.split(" ").join("+");
-      // console.log("test movie name", movieNameSplited);
-      // return "f9";
-      // return movieNameSplited;
+    let newestMovieID = ref();
+    let hightRatedMovie = ref(0);
+    let newestMovieinfo = ref({});
 
-      if (movieSearch.value != "") {
-        let movieNameSplited = movieSearch.value.split(" ").join("+");
+    const testApi = async () => {
+      let movieNameSplited = movieSearch.value.split(" ").join("+");
 
-        fetch(`https://www.omdbapi.com/?apikey=9a933189&t=${movieNameSplited}}`)
-          .then((response) => response.json())
-          .then((data) => {
-            movie.value = data;
-            console.log(data);
-            movieSearch.value = "";
+      await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&query=${movieNameSplited}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log(data.results);
+
+          // find the newest movie hightRated by searching
+          data.results.forEach((movie) => {
+            // console.log(movie);
+            // if (movie.vote_average > hightRatedMovie.value) {
+            hightRatedMovie.value = movie.vote_average;
+            // }
           });
-      } else {
-        console.log("search fun dont work");
-      }
+
+          // find the newest movie information by searching
+          data.results.forEach((movie) => {
+            if (movie.vote_average === hightRatedMovie.value) {
+              newestMovieID.value = movie.id;
+            }
+          });
+        });
+
+      // console.log(hightRatedMovie.value);
+      // console.log(newestMovieID.value);
+      getMovieById();
     };
 
-    function callMovies() {
-      // if (movieSearch.value != "") console.log(movieSearch.value);
-    }
+    const getMovieById = async () => {
+      // console.log(newestMovieID.value);
+      await fetch(
+        `https://api.themoviedb.org/3/movie/${newestMovieID.value}?api_key=${
+          import.meta.env.VITE_API_KEY
+        }`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          newestMovieinfo.value = data;
+          // console.log(data);
+        });
+    };
 
-    return { searchMovie, movieSearch, callMovies, movie };
+    testApi();
+
+    return {
+      movieSearch,
+      movie,
+      newestMovieID,
+      testApi,
+      getMovieById,
+      newestMovieinfo,
+    };
   },
 };
 </script>

@@ -13,6 +13,7 @@
     "@vitejs/plugin-vue": "^1.2.4",
     "@vue/compiler-sfc": "^3.0.5",
     "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
     "eslint": "^7.30.0",
     "sass": "^1.35.1",
     "vite": "^2.4.0",

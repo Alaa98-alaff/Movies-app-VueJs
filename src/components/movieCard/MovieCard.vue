@@ -1,25 +1,33 @@
 <template>
   <div class="background">
-    <img
-      class="background__image"
-      src="https://images.hdqwalls.com/wallpapers/fast-and-furious-9-the-fast-saga-2020-movie-i5.jpg"
-      alt=""
-    />
+    <!-- <img class="background__image" src="" alt="" /> -->
     <div class="content">
-      <HeaderComponent></HeaderComponent>
-      <NewMovies></NewMovies>
+      <HeaderComponent @SearchData="insertDataToChild"></HeaderComponent>
+      <!-- <MainComponent></MainComponent> -->
+      <NewMoviesComponent></NewMoviesComponent>
     </div>
   </div>
 </template>
 
 <script>
+import { ref } from "vue";
+
 import HeaderComponent from "./Header.vue";
-import NewMovies from "./NewMovies.vue";
+import NewMoviesComponent from "./NewMovies.vue";
+import MainComponent from "./MainMovie.vue";
 
 export default {
-  components: { HeaderComponent, NewMovies },
+  components: { HeaderComponent, NewMoviesComponent, MainComponent },
+
   setup() {
-    return {};
+    let incomeMovieData = ref({});
+
+    function insertDataToChild(data) {
+      console.log(data);
+    }
+
+    console.log(incomeMovieData.value, "TEST");
+    return { insertDataToChild, incomeMovieData };
   },
 };
 </script>
@@ -29,6 +37,7 @@ export default {
   margin: 0;
 }
 .background {
+  background-color: rgb(56, 50, 50);
   overflow: hidden;
   position: relative;
 

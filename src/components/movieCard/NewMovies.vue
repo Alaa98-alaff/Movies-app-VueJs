@@ -2,14 +2,45 @@
   <section class="new-movies">
     <p class="new-movies__title">New Movies</p>
     <div class="movies">
-      <div class="movies__movie"></div>
-      <div class="movies__movie"></div>
-      <div class="movies__movie"></div>
-      <div class="movies__movie"></div>
-      <div class="movies__movie"></div>
+      <router-link to="/movie">
+        <div class="movies__movie" v-for="movie in newMoviesObj">
+          {{ movie.title }}
+        </div>
+      </router-link>
     </div>
   </section>
 </template>
+
+<script>
+import { ref } from "vue";
+export default {
+  setup() {
+    let newMoviesObj = ref([]);
+    let randomOne = Math.floor(Math.random() * 15) + 1;
+
+    const newTopMovies = async () => {
+      await fetch(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=en-US&sort_by=popularity.desc&page=1&year=2021&with_watch_monetization_types=flatrate`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data.results);
+
+          for (let i = randomOne; i < randomOne + 5; i++) {
+            newMoviesObj.value.push(data.results[i]);
+          }
+        });
+      console.log(newMoviesObj.value);
+    };
+
+    newTopMovies();
+
+    return { newTopMovies, newMoviesObj };
+  },
+};
+</script>
 
 <style lang="scss">
 .new-movies {

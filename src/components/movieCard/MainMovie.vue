@@ -10,17 +10,21 @@
 
     <div class="titles">
       <div class="titles-container">
-        <h1 class="titles__main-title">{{ movieSearched.Title }}</h1>
-        <p class="titles__year">{{ movieSearched.Year }}</p>
+        <h1 class="titles__main-title">{{ movieSearched.title }}</h1>
+        <p class="titles__year">
+          {{ movieSearched.release_date }}
+        </p>
         <p class="titles__runtime">
-          {{ movieSearched.Runtime }} |
-          <span class="titles__category">{{ movieSearched.Genre }}</span>
+          {{ movieSearched.runtime }} min |
+          <span class="titles__category">
+            {{ movieSearched.Genre }}
+          </span>
         </p>
         <div class="rating-container">
           <i class="rating-container__star fas fa-star fa-2x"></i>
           <p>
             <strong class="rating-container__rate">{{
-              movieSearched.imdbRating
+              movieSearched.vote_average
             }}</strong
             >/ 10
           </p>
