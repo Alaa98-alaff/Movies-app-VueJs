@@ -6,7 +6,9 @@
 
     <div class="titles">
       <div class="titles-container">
-        <h1 class="titles__main-title">{{ movieDetails.title }}</h1>
+        <h1 class="titles__main-title">
+          {{ movieDetails.title }} {{ $route.params.id }}
+        </h1>
         <p class="titles__year">{{ movieDetails.release_date }}</p>
         <p class="titles__runtime">
           {{ movieDetails.runtime }} min |
@@ -28,7 +30,9 @@
         </p>
       </div>
       <div class="buttons">
-        <button class="buttons__btn trial">Watch trial</button>
+        <button class="buttons__btn trial" @click="testRoute()">
+          Watch trial
+        </button>
         <button class="buttons__btn move">Watch Movie</button>
       </div>
     </div>
@@ -37,32 +41,49 @@
 
 <script>
 import { onBeforeMount, ref, watch, watchEffect } from "vue";
+import { useRoute } from "vue-router";
 
 export default {
   props: ["searchedMovieID"],
 
   setup(props) {
+    let route = useRoute();
+    let routeParamsID = ref(route.params.id);
+
+    // console.log(route.params.id);
+
     let movieDetails = ref({});
     let movieImgUrl = ref("https://image.tmdb.org/t/p/w500");
-    // watch and update the movie when movie id change
 
+    // watch and update the movie when movie id change
     async function getMovieInfoWithID() {
       await fetch(
-        `https://api.themoviedb.org/3/movie/${props.searchedMovieID}?api_key=${
+        `https://api.themoviedb.org/3/movie/${routeParamsID.value}?api_key=${
           import.meta.env.VITE_API_KEY
         }`
       )
         .then((response) => response.json())
         .then((data) => {
           movieDetails.value = data;
-          console.log(data);
+          // console.log(data);
         });
     }
     getMovieInfoWithID();
 
+    function testRoute() {
+      console.log(routeParamsID.value);
+    }
+
+    watchEffect(route);
     watchEffect(getMovieInfoWithID);
 
-    return { movieDetails, getMovieInfoWithID, movieImgUrl };
+    return {
+      movieDetails,
+      getMovieInfoWithID,
+      movieImgUrl,
+      routeParamsID,
+      testRoute,
+    };
   },
 };
 </script>

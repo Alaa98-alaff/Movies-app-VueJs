@@ -9,9 +9,9 @@ const routes = [
     component: MovieCardComponent,
   },
   {
-    path: "/movie",
+    path: "/new-movie/:id",
     name: "Current Movie",
-    component: CurrentMovieComponent,
+    component: MovieCardComponent,
   },
 ];
 

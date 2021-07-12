@@ -1,9 +1,9 @@
 <template>
   <section class="new-movies-container">
     <p class="new-movies-container__title">New Movies</p>
-    <router-link to="/movie">
-      <div class="new-movies">
-        <div class="new-movie" v-for="movie in newMoviesObj">
+    <div class="new-movies">
+      <router-link v-for="movie in newMoviesObj" :to="/new-movie/ + movie.id">
+        <div class="new-movie">
           <img
             class="new-movie__img"
             :src="movieImgUrl + movie.backdrop_path"
@@ -13,15 +13,20 @@
             {{ movie.title.split(" ").slice(-4).join(" ") }}
           </p>
         </div>
-      </div>
-    </router-link>
+      </router-link>
+    </div>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
+import { useRoute } from "vue-router";
+
 export default {
   setup() {
+    const route = useRoute();
+    let routeParamsID = ref(route.params.id);
+
     let newMoviesObj = ref([]);
     let randomOne = Math.floor(Math.random() * 15) + 1;
     let movieImgUrl = ref("https://image.tmdb.org/t/p/w200");
@@ -92,7 +97,7 @@ export default {
       left: 50%;
       transform: translate(-50%, -50%);
       transition: transform 0.45s;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
     }
 

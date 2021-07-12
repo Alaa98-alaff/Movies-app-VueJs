@@ -3,7 +3,7 @@
     <!-- <img class="background__image" src="" alt="" /> -->
     <div class="content">
       <HeaderComponent
-        @searchedMovieID="insertMovieIDToChild"
+        @searchedMovieID="insertMovieIDToMainComp"
       ></HeaderComponent>
       <MainComponent :searchedMovieID="incomeMovieID"></MainComponent>
       <NewMoviesComponent></NewMoviesComponent>
@@ -25,11 +25,11 @@ export default {
     let incomeMovieID = ref(793798);
 
     // Movie ID Coming from Header ,and send as props to main
-    function insertMovieIDToChild(data) {
+    function insertMovieIDToMainComp(data) {
       incomeMovieID.value = data;
     }
 
-    return { insertMovieIDToChild, incomeMovieID };
+    return { insertMovieIDToMainComp, incomeMovieID };
   },
 };
 </script>

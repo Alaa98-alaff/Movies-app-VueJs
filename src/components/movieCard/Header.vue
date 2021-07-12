@@ -54,6 +54,7 @@ export default {
       )
         .then((response) => response.json())
         .then((data) => {
+          console.log(data.results[0]);
           console.log(data.results[data.results.length - 1].id);
 
           newestMovieID.value = data.results[data.results.length - 1].id;
@@ -97,10 +98,12 @@ export default {
 
     .movies {
       color: $logo-red-color;
+      text-decoration: underline;
     }
 
     .vue {
       color: $logo-blue-color;
+      text-decoration: underline;
     }
   }
 }
