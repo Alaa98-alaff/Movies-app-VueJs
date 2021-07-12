@@ -37,7 +37,7 @@ export default {
   components: { MainMovieComponent },
   emits: ["searchedMovieID"],
   setup(props, { emit }) {
-    let movieSearch = ref("superman");
+    let movieSearch = ref("");
     let movie = ref({});
 
     let newestMovieID = ref();
@@ -60,6 +60,7 @@ export default {
 
           // Send the Movie ID to the MainComponent
           emit("searchedMovieID", data.results[data.results.length - 1].id);
+          movieSearch.value = "";
         });
 
       // console.log(hightRatedMovie.value);

@@ -1,24 +1,31 @@
 <template>
   <main class="main-movie">
     <div class="trial">
-      <img class="trial__image" />
+      <img class="trial__image" :src="movieImgUrl + movieDetails.poster_path" />
     </div>
 
     <div class="titles">
       <div class="titles-container">
         <h1 class="titles__main-title">{{ movieDetails.title }}</h1>
-        <p class="titles__year">year</p>
+        <p class="titles__year">{{ movieDetails.release_date }}</p>
         <p class="titles__runtime">
-          runtime min |
-          <span class="titles__category"> gener </span>
+          {{ movieDetails.runtime }} min |
+          <span class="titles__category"> {{ movieDetails.gener }} </span>
         </p>
         <div class="rating-container">
           <i class="rating-container__star fas fa-star fa-2x"></i>
-          <p><strong class="rating-container__rate">vote</strong>/ 10</p>
+          <p>
+            <strong class="rating-container__rate">{{
+              movieDetails.vote_average
+            }}</strong
+            >/ 10
+          </p>
 
           <i class="rating-container__imdb fab fa-imdb fa-3x"></i>
         </div>
-        <p class="titles__summary">summary</p>
+        <p class="titles__summary">
+          {{ movieDetails.overview }}
+        </p>
       </div>
       <div class="buttons">
         <button class="buttons__btn trial">Watch trial</button>
@@ -36,7 +43,7 @@ export default {
 
   setup(props) {
     let movieDetails = ref({});
-
+    let movieImgUrl = ref("https://image.tmdb.org/t/p/w500");
     // watch and update the movie when movie id change
 
     async function getMovieInfoWithID() {
@@ -46,13 +53,16 @@ export default {
         }`
       )
         .then((response) => response.json())
-        .then((data) => (movieDetails.value = data));
+        .then((data) => {
+          movieDetails.value = data;
+          console.log(data);
+        });
     }
     getMovieInfoWithID();
 
     watchEffect(getMovieInfoWithID);
 
-    return { movieDetails, getMovieInfoWithID };
+    return { movieDetails, getMovieInfoWithID, movieImgUrl };
   },
 };
 </script>
