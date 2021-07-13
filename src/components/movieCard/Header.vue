@@ -51,17 +51,8 @@ export default {
 
     let search = ref("");
 
-    async function searchMovie() {
-      await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${
-          import.meta.env.VITE_API_KEY
-        }&query=${search.value}`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          routing.push(`/search/${search.value.split(" ").join("+")}`);
-        });
+    function searchMovie() {
+      routing.push(`/search/${search.value.split(" ").join("+")}`);
 
       //   await fetch(
       //     `https://api.themoviedb.org/3/movie/385128?api_key=28d21c2ab78a115b922454271e59f0cf&append_to_response=credits`

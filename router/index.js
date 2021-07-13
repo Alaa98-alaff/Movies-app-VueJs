@@ -17,6 +17,7 @@ const routes = [
     path: "/search/:name",
     name: "Searched Movies",
     component: SearchedMovies,
+    props: true,
   },
 ];
 
