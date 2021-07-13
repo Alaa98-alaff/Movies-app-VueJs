@@ -94,10 +94,12 @@ export default {
 
 <style lang="scss">
 .header {
-  margin: 30px 70px 0px 20px;
+  background-color: $header-background-color;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100px;
+  padding: 0 40px 0 40px;
 
   &__logo {
     display: flex;

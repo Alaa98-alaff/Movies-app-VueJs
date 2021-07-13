@@ -1,7 +1,11 @@
 <template>
   <main class="main-movie">
     <div class="trial">
-      <img class="trial__image" :src="baseImgUrl + movieDetails.poster_path" />
+      <img
+        class="trial__image"
+        :src="baseImgUrl + movieDetails.poster_path"
+        :alt="movieDetails.title"
+      />
     </div>
 
     <div class="titles">
@@ -85,9 +89,9 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-right: $margin-right;
-  margin-left: $margin-left;
-  margin-top: $margin-top;
+  margin-right: $main-margin-right;
+  margin-left: $main-margin-left;
+  margin-top: $main-margin-top;
 }
 
 .trial {

@@ -68,8 +68,8 @@ export default {
 .new-movies-container {
   display: flex;
   flex-direction: column;
-  margin-right: $margin-right;
-  margin-left: $margin-left;
+  margin-right: $main-margin-right;
+  margin-left: $main-margin-left;
   margin-top: 40px;
 
   &__title {

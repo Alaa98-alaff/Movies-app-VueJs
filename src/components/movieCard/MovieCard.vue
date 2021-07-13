@@ -38,9 +38,11 @@ export default {
 <style lang="scss">
 * {
   margin: 0;
+  padding: 0;
 }
+
 .background {
-  background-color: rgb(56, 50, 50);
+  background-color: $main-background-color;
   overflow: hidden;
   position: relative;
 
