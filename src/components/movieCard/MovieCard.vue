@@ -2,10 +2,11 @@
   <div class="background">
     <!-- <img class="background__image" src="" alt="" /> -->
     <div class="content">
-      <HeaderComponent
-        @searchedMovieID="insertMovieIDToMainComp"
-      ></HeaderComponent>
-      <MainComponent :searchedMovieID="incomeMovieID"></MainComponent>
+      <HeaderComponent></HeaderComponent>
+      <MainComponent
+        :searchedMovieID="incomeMovieID"
+        :key="$route.params.id"
+      ></MainComponent>
       <NewMoviesComponent></NewMoviesComponent>
     </div>
   </div>
@@ -22,7 +23,7 @@ export default {
   components: { HeaderComponent, NewMoviesComponent, MainComponent },
 
   setup() {
-    let incomeMovieID = ref(793798);
+    let incomeMovieID = ref();
 
     // Movie ID Coming from Header ,and send as props to main
     function insertMovieIDToMainComp(data) {

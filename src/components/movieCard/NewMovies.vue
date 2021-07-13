@@ -2,8 +2,12 @@
   <section class="new-movies-container">
     <p class="new-movies-container__title">New Movies</p>
     <div class="new-movies">
-      <router-link v-for="movie in newMoviesObj" :to="/new-movie/ + movie.id">
-        <div class="new-movie">
+      <router-link
+        v-for="movie in newMoviesObj"
+        :key="movie.id"
+        :to="/new-movie/ + movie.id"
+      >
+        <div class="new-movie" @click="testWatch($event, movie.id)">
           <img
             class="new-movie__img"
             :src="movieImgUrl + movie.backdrop_path"
@@ -19,7 +23,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 
 export default {
@@ -48,9 +52,14 @@ export default {
         });
     };
 
+    function testWatch(_, id) {
+      // routeParamsID.value = route.params.id;
+      console.log(id);
+    }
+
     newTopMovies();
 
-    return { newTopMovies, newMoviesObj, movieImgUrl };
+    return { newTopMovies, newMoviesObj, movieImgUrl, testWatch };
   },
 };
 </script>

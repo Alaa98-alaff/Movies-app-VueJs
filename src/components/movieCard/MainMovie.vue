@@ -1,18 +1,22 @@
 <template>
   <main class="main-movie">
     <div class="trial">
-      <img class="trial__image" :src="movieImgUrl + movieDetails.poster_path" />
+      <img class="trial__image" :src="baseImgUrl + movieDetails.poster_path" />
     </div>
 
     <div class="titles">
       <div class="titles-container">
         <h1 class="titles__main-title">
-          {{ movieDetails.title }} {{ $route.params.id }}
+          {{ movieDetails.title }}
         </h1>
-        <p class="titles__year">{{ movieDetails.release_date }}</p>
+        <p class="titles__year">
+          {{ movieDetails.release_date?.split("-")[0] }}
+        </p>
         <p class="titles__runtime">
           {{ movieDetails.runtime }} min |
-          <span class="titles__category"> {{ movieDetails.gener }} </span>
+          <span class="titles__category">
+            {{ movieDetails.genres?.map((gener) => gener.name).join(", ") }}
+          </span>
         </p>
         <div class="rating-container">
           <i class="rating-container__star fas fa-star fa-2x"></i>
@@ -26,13 +30,11 @@
           <i class="rating-container__imdb fab fa-imdb fa-3x"></i>
         </div>
         <p class="titles__summary">
-          {{ movieDetails.overview }}
+          {{ movieDetails.overview?.split(" ").slice(-35).join(" ") }}
         </p>
       </div>
       <div class="buttons">
-        <button class="buttons__btn trial" @click="testRoute()">
-          Watch trial
-        </button>
+        <button class="buttons__btn trial">Watch trial</button>
         <button class="buttons__btn move">Watch Movie</button>
       </div>
     </div>
@@ -40,7 +42,7 @@
 </template>
 
 <script>
-import { onBeforeMount, ref, watch, watchEffect } from "vue";
+import { onBeforeMount, ref } from "vue";
 import { useRoute } from "vue-router";
 
 export default {
@@ -50,39 +52,29 @@ export default {
     let route = useRoute();
     let routeParamsID = ref(route.params.id);
 
-    // console.log(route.params.id);
-
     let movieDetails = ref({});
-    let movieImgUrl = ref("https://image.tmdb.org/t/p/w500");
+    let baseImgUrl = ref("https://image.tmdb.org/t/p/w500");
 
     // watch and update the movie when movie id change
-    async function getMovieInfoWithID() {
+    async function getMovieInfoWithID(id = 637649) {
       await fetch(
-        `https://api.themoviedb.org/3/movie/${routeParamsID.value}?api_key=${
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${
           import.meta.env.VITE_API_KEY
         }`
       )
         .then((response) => response.json())
         .then((data) => {
           movieDetails.value = data;
-          // console.log(data);
         });
     }
-    getMovieInfoWithID();
 
-    function testRoute() {
-      console.log(routeParamsID.value);
-    }
-
-    watchEffect(route);
-    watchEffect(getMovieInfoWithID);
+    getMovieInfoWithID(routeParamsID.value);
 
     return {
       movieDetails,
       getMovieInfoWithID,
-      movieImgUrl,
+      baseImgUrl,
       routeParamsID,
-      testRoute,
     };
   },
 };

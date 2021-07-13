@@ -1,6 +1,6 @@
 <template>
   <HeaderComponent></HeaderComponent>
-  <h1>current movie</h1>
+  <h1>Searched Movies Page</h1>
 </template>
 
 <script>
