@@ -46,7 +46,7 @@ import { onBeforeMount, ref } from "vue";
 import { useRoute } from "vue-router";
 
 export default {
-  props: ["searchedMovieID"],
+  props: ["id"],
 
   setup(props) {
     let route = useRoute();

@@ -12,6 +12,7 @@ const routes = [
     path: "/new-movie/:id",
     name: "Current Movie",
     component: MovieCardComponent,
+    props: true,
   },
   {
     path: "/search/:name",
