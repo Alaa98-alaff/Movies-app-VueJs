@@ -37,55 +37,12 @@ import { useRoute } from "vue-router";
 import routing from "../../../router/index";
 
 export default {
-  // components: { MainMovieComponent },
-  // emits: ["searchedMovieID"],
   setup() {
-    // let movieSearch = ref("");
-    // let movie = ref({});
-    // let route = useRoute();
-    // let routeParamsID = ref(route.params.id);
-
-    // let newestMovieID = ref();
-    // let hightRatedMovie = ref(0);
-    // let newestMovieinfo = ref({});#
-
     let search = ref("");
 
     function searchMovie() {
       routing.push(`/search/${search.value.split(" ").join("+")}`);
-
-      //   await fetch(
-      //     `https://api.themoviedb.org/3/movie/385128?api_key=28d21c2ab78a115b922454271e59f0cf&append_to_response=credits`
-      //   )
-      //     .then((response) => response.json())
-      //     .then((data) => console.log(data));
     }
-
-    // const testApi = async (event) => {
-    //   let movieNameSplited = movieSearch.value.split(" ").join("+");
-
-    // await fetch(
-    //   `https://api.themoviedb.org/3/search/movie?api_key=${
-    //     import.meta.env.VITE_API_KEY
-    //   }&query=${movieNameSplited}`
-    // )
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    // console.log(data.results[0]);
-    // console.log(data.results[data.results?.length - 1].id);
-
-    // newestMovieID.value = data.results[data.results.length - 1].id;
-
-    // Send the Movie ID to the MainComponent
-    //   emit("searchedMovieID", data.results[data.results.length - 1].id);
-    //   movieSearch.value = "";
-    // });
-
-    // console.log(hightRatedMovie.value);
-    // console.log(newestMovieID.value);
-    // };
-
-    // testApi();
 
     return { search, searchMovie };
   },

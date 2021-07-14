@@ -4,7 +4,10 @@
     <div class="searhed-movies-container">
       <div class="searched-movies-cards">
         <div v-for="movie in searhedMoviesArray" :key="movie.id">
-          <div class="searched-movie-card">
+          <div
+            class="searched-movie-card"
+            @click="getSelectedMovieID(movie.id)"
+          >
             <img
               class="searched-movie-card__img"
               :src="baseImgUrl + movie.poster_path"
@@ -26,6 +29,7 @@
 <script>
 import { ref, watch } from "vue";
 
+import routing from "../router/index";
 import HeaderComponent from "../src/components/movieCard/Header.vue";
 
 export default {
@@ -59,20 +63,29 @@ export default {
           });
 
           //   searhedMoviesArray.value = data.results;
-          console.log(data);
+          // console.log(data);
         });
 
-      console.log(searhedMoviesArray.value);
+      // console.log(searhedMoviesArray.value);
     }
 
     watch(
       () => props.name,
       (newValue) => fetchSearchedMovies(newValue)
     );
-
     fetchSearchedMovies(props.name);
 
-    return { fetchSearchedMovies, searhedMoviesArray, baseImgUrl };
+    // Get selected Movie ID To as params
+    function getSelectedMovieID(id) {
+      routing.push(`/search/${props.name}/${id}`);
+    }
+
+    return {
+      fetchSearchedMovies,
+      searhedMoviesArray,
+      baseImgUrl,
+      getSelectedMovieID,
+    };
   },
 };
 </script>
