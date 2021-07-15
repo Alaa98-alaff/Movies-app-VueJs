@@ -54,6 +54,7 @@
     </main>
     <NewMoviesComponent></NewMoviesComponent>
   </div>
+  <SortMoviesComponent></SortMoviesComponent>
 </template>
 
 <script>
@@ -62,10 +63,11 @@ import { useRoute } from "vue-router";
 
 import HeaderComponent from "../src/components/movieCard/HeaderComponent.vue";
 import NewMoviesComponent from "../src/components/movieCard/NewMoviesComponent.vue";
+import SortMoviesComponent from "../src/components/movieCard/SortedMoviesComponent.vue";
 
 export default {
   props: ["id"],
-  components: { HeaderComponent, NewMoviesComponent },
+  components: { HeaderComponent, NewMoviesComponent, SortMoviesComponent },
 
   setup(props) {
     let route = useRoute();

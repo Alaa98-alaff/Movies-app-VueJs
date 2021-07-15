@@ -5,7 +5,7 @@
       <router-link
         v-for="movie in newMoviesObj"
         :key="movie.id"
-        :to="/new-movie/ + movie.id"
+        :to="/search/ + movie.title + '/' + movie.id"
       >
         <div class="new-movie" @click="testWatch($event, movie.id)">
           <img
@@ -31,10 +31,12 @@ export default {
     const route = useRoute();
     let routeParamsID = ref(route.params.id);
 
+    let newMovieRandomID = ref();
     let newMoviesObj = ref([]);
     let randomOne = Math.floor(Math.random() * 15) + 1;
     let movieImgUrl = ref("https://image.tmdb.org/t/p/w200");
 
+    // Api for most popular and new movies
     const newTopMovies = async () => {
       await fetch(
         `https://api.themoviedb.org/3/discover/movie?api_key=${
@@ -43,23 +45,27 @@ export default {
       )
         .then((response) => response.json())
         .then((data) => {
-          // console.log(data.results);
-
           for (let i = randomOne; i < randomOne + 5; i++) {
             newMoviesObj.value.push(data.results[i]);
-            console.log(newMoviesObj.value);
+            newMovieRandomID.value = data.results[i].id;
+            console.log(newMovieRandomID.value);
           }
         });
     };
+    newTopMovies();
 
     function testWatch(_, id) {
       // routeParamsID.value = route.params.id;
       console.log(id);
     }
 
-    newTopMovies();
-
-    return { newTopMovies, newMoviesObj, movieImgUrl, testWatch };
+    return {
+      newTopMovies,
+      newMoviesObj,
+      movieImgUrl,
+      testWatch,
+      newMovieRandomID,
+    };
   },
 };
 </script>

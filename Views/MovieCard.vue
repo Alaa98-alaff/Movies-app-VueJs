@@ -1,10 +1,7 @@
 <template>
   <div class="background">
     <div class="content">
-      <MainComponent
-        :searchedMovieID="incomeMovieID"
-        :key="$route.params.id"
-      ></MainComponent>
+      <MainComponent :key="$route.params.id"></MainComponent>
     </div>
   </div>
 </template>
@@ -12,22 +9,13 @@
 <script>
 import { ref } from "vue";
 
-import HeaderComponent from "../src/components/movieCard/HeaderComponent.vue";
-import NewMoviesComponent from "../src/components/movieCard/NewMoviesComponent.vue";
 import MainComponent from "../Views/MainMovie.vue";
 
 export default {
-  components: { NewMoviesComponent, MainComponent },
+  components: { MainComponent },
 
   setup() {
-    let incomeMovieID = ref();
-
-    // Movie ID Coming from Header ,and send as props to main
-    function insertMovieIDToMainComp(data) {
-      incomeMovieID.value = data;
-    }
-
-    return { insertMovieIDToMainComp, incomeMovieID };
+    return {};
   },
 };
 </script>
