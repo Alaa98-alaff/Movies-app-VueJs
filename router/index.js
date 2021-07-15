@@ -2,12 +2,13 @@ import { createRouter, createWebHistory } from "vue-router";
 import MovieCardComponent from "../Views/MovieCard.vue";
 import SearchedMovies from "../Views/SearchedMoviesComponent.vue";
 import SelectedMovie from "../Views/SelectedMovieComponent.vue";
+import MainMovieComponent from "../Views/MainMovie.vue";
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: MovieCardComponent,
+    component: MainMovieComponent,
   },
   {
     path: "/new-movie/:id",

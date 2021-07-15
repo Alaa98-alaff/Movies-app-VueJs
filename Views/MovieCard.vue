@@ -2,12 +2,11 @@
   <div class="background">
     <!-- <img class="background__image" src="" alt="" /> -->
     <div class="content">
-      <HeaderComponent></HeaderComponent>
       <MainComponent
         :searchedMovieID="incomeMovieID"
         :key="$route.params.id"
       ></MainComponent>
-      <NewMoviesComponent></NewMoviesComponent>
+      <!-- <NewMoviesComponent></NewMoviesComponent> -->
     </div>
   </div>
 </template>
@@ -16,11 +15,11 @@
 import { ref } from "vue";
 
 import HeaderComponent from "../src/components/movieCard/HeaderComponent.vue";
-import NewMoviesComponent from "../src/components/movieCard/NewMovies.vue";
-import MainComponent from "../src/components/movieCard/MainMovie.vue";
+import NewMoviesComponent from "../src/components/movieCard/NewMoviesComponent.vue";
+import MainComponent from "../Views/MainMovie.vue";
 
 export default {
-  components: { HeaderComponent, NewMoviesComponent, MainComponent },
+  components: { NewMoviesComponent, MainComponent },
 
   setup() {
     let incomeMovieID = ref();

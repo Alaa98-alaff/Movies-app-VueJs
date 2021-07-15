@@ -1,4 +1,5 @@
 <template>
+  <HeaderComponent></HeaderComponent>
   <main class="main-movie">
     <div class="trial">
       <img
@@ -43,14 +44,19 @@
       </div>
     </div>
   </main>
+  <NewMoviesComponent></NewMoviesComponent>
 </template>
 
 <script>
 import { onBeforeMount, ref } from "vue";
 import { useRoute } from "vue-router";
 
+import HeaderComponent from "../src/components/movieCard/HeaderComponent.vue";
+import NewMoviesComponent from "../src/components/movieCard/NewMoviesComponent.vue";
+
 export default {
   props: ["id"],
+  components: { HeaderComponent, NewMoviesComponent },
 
   setup(props) {
     let route = useRoute();

@@ -32,7 +32,6 @@
 
 <script>
 import { ref, onMounted } from "vue";
-import MainMovieComponent from "./MainMovie.vue";
 import { useRoute } from "vue-router";
 import routing from "../../../router/index";
 
@@ -51,7 +50,7 @@ export default {
 
 <style lang="scss">
 .header {
-  background-color: $header-background-color;
+  // background-color: $header-background-color;
   display: flex;
   justify-content: space-between;
   align-items: center;
