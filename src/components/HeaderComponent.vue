@@ -26,14 +26,12 @@
       </div>
     </form>
   </header>
-
-  <!-- <MainMovieComponent :movieSearched="newestMovieinfo"></MainMovieComponent> -->
 </template>
 
 <script>
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
-import routing from "../../../router/index";
+import routing from "../../router/index";
 
 export default {
   setup() {

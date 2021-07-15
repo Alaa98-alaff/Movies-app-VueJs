@@ -9,11 +9,8 @@
 <script>
 import { useRoute } from "vue-router";
 
-import HeaderComponent from "./components/movieCard/HeaderComponent.vue";
-import MovieCard from "../Views/MovieCard.vue";
-
 export default {
-  components: { MovieCard, HeaderComponent },
+  components: {},
   setup() {
     return {};
   },

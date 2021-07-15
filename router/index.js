@@ -1,32 +1,25 @@
 import { createRouter, createWebHistory } from "vue-router";
-import MovieCardComponent from "../Views/MovieCard.vue";
-import SearchedMovies from "../Views/SearchedMoviesComponent.vue";
-import SelectedMovie from "../Views/SelectedMovieComponent.vue";
-import MainMovieComponent from "../Views/MainMovie.vue";
+import SearchedMoviesPage from "../Views/SearchedMoviesPage.vue";
+import SelectedMoviePage from "../Views/SelectedMoviePage.vue";
+import MainPage from "../Views/MainPage.vue";
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: MainMovieComponent,
-    props: true,
-  },
-  {
-    path: "/new-movie/:id",
-    name: "Current Movie",
-    component: MovieCardComponent,
+    component: MainPage,
     props: true,
   },
   {
     path: "/search/:name",
     name: "Searched Movies",
-    component: SearchedMovies,
+    component: SearchedMoviesPage,
     props: true,
   },
   {
     path: "/search/:name/:id",
     name: "Selected Movies",
-    component: SelectedMovie,
+    component: SelectedMoviePage,
     props: true,
   },
 ];

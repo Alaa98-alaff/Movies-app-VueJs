@@ -80,7 +80,7 @@
 import routing from "../router/index";
 
 import { ref } from "vue";
-import HeaderComponent from "../src/components/movieCard/HeaderComponent.vue";
+import HeaderComponent from "../src/components/HeaderComponent.vue";
 
 export default {
   props: ["name", "id"],

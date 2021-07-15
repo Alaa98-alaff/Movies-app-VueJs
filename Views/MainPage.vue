@@ -61,9 +61,9 @@
 import { onBeforeMount, ref } from "vue";
 import { useRoute } from "vue-router";
 
-import HeaderComponent from "../src/components/movieCard/HeaderComponent.vue";
-import NewMoviesComponent from "../src/components/movieCard/NewMoviesComponent.vue";
-import SortMoviesComponent from "../src/components/movieCard/SortedMoviesComponent.vue";
+import HeaderComponent from "../src/components/HeaderComponent.vue";
+import NewMoviesComponent from "../src/components/NewMoviesComponent.vue";
+import SortMoviesComponent from "../src/components/SortedMoviesComponent.vue";
 
 export default {
   props: ["id"],
