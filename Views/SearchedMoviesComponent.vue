@@ -30,7 +30,7 @@
 import { ref, watch } from "vue";
 
 import routing from "../router/index";
-import HeaderComponent from "../src/components/movieCard/Header.vue";
+import HeaderComponent from "../src/components/movieCard/HeaderComponent.vue";
 
 export default {
   components: { HeaderComponent },

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import MovieCardComponent from "../src/components/movieCard/MovieCard.vue";
-import SearchedMovies from "../Views/SearchedMovies.vue";
-import SelectedMovie from "../Views/SelectedMovie.vue";
+import MovieCardComponent from "../Views/MovieCard.vue";
+import SearchedMovies from "../Views/SearchedMoviesComponent.vue";
+import SelectedMovie from "../Views/SelectedMovieComponent.vue";
 
 const routes = [
   {

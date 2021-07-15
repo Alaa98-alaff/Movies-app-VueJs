@@ -15,9 +15,9 @@
 <script>
 import { ref } from "vue";
 
-import HeaderComponent from "./Header.vue";
-import NewMoviesComponent from "./NewMovies.vue";
-import MainComponent from "./MainMovie.vue";
+import HeaderComponent from "../src/components/movieCard/HeaderComponent.vue";
+import NewMoviesComponent from "../src/components/movieCard/NewMovies.vue";
+import MainComponent from "../src/components/movieCard/MainMovie.vue";
 
 export default {
   components: { HeaderComponent, NewMoviesComponent, MainComponent },

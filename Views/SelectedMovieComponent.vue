@@ -71,7 +71,7 @@
 import routing from "../router/index";
 
 import { ref } from "vue";
-import HeaderComponent from "../src/components/movieCard/Header.vue";
+import HeaderComponent from "../src/components/movieCard/HeaderComponent.vue";
 
 export default {
   props: ["name", "id"],
