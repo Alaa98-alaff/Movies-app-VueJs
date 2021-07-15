@@ -45,7 +45,9 @@
           </p>
         </div>
         <div class="buttons">
-          <button class="buttons__btn trial">Watch trial</button>
+          <a :href="youtubeBaseUrl + trailVideoLink">
+            <button class="buttons__btn trial">Watch trial</button>
+          </a>
           <button class="buttons__btn move">Watch Movie</button>
         </div>
       </div>
@@ -68,20 +70,22 @@ export default {
   setup(props) {
     let route = useRoute();
     let routeParamsID = ref(route.params.id);
-
     let movieDetails = ref({});
     let baseImgUrl = ref("https://image.tmdb.org/t/p/w500");
+    let trailVideoLink = ref("");
+    let youtubeBaseUrl = ref("https://www.youtube.com/watch?v=");
 
     // watch and update the movie when movie id change
     async function getMovieInfoWithID(id = 637649) {
       await fetch(
         `https://api.themoviedb.org/3/movie/${id}?api_key=${
           import.meta.env.VITE_API_KEY
-        }&append_to_response=images`
+        }&append_to_response=images,videos`
       )
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
+          trailVideoLink.value = data.videos.results[0].key;
           movieDetails.value = data;
         });
     }
@@ -93,6 +97,8 @@ export default {
       getMovieInfoWithID,
       baseImgUrl,
       routeParamsID,
+      trailVideoLink,
+      youtubeBaseUrl,
     };
   },
 };
