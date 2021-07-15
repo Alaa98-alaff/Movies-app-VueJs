@@ -70,7 +70,6 @@ export default {
   flex-direction: column;
   margin-right: $main-margin-right;
   margin-left: $main-margin-left;
-  margin-top: 40px;
 
   &__title {
     color: #fff;
@@ -98,7 +97,8 @@ export default {
 
     &:hover > .new-movie__img {
       opacity: 1;
-      transition: opacity 0.5s;
+      transition: all 0.5s;
+      filter: brightness(100%);
     }
 
     &:hover > .new-movie__title {
@@ -142,8 +142,8 @@ export default {
       width: 150px;
       height: 90px;
       border-radius: 8px;
-      opacity: 0.4;
-      transition: opacity 0.5s;
+      transition: all 0.5s;
+      filter: brightness(60%);
     }
 
     &__highlight {

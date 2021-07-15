@@ -1,12 +1,10 @@
 <template>
   <div class="background">
-    <!-- <img class="background__image" src="" alt="" /> -->
     <div class="content">
       <MainComponent
         :searchedMovieID="incomeMovieID"
         :key="$route.params.id"
       ></MainComponent>
-      <!-- <NewMoviesComponent></NewMoviesComponent> -->
     </div>
   </div>
 </template>
@@ -41,7 +39,7 @@ export default {
 }
 
 .background {
-  background-color: $main-background-color;
+  // background-color: $main-background-color;
   overflow: hidden;
   position: relative;
 

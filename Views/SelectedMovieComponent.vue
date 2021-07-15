@@ -1,53 +1,62 @@
 <template>
-  <HeaderComponent></HeaderComponent>
-  <main class="main-movie">
-    <div class="trial">
-      <img
-        class="trial__image"
-        :src="baseImgUrl + selectedMovieDetails.poster_path"
-        :alt="selectedMovieDetails.title"
-      />
-    </div>
+  <div class="background-img">
+    <img
+      class="background-img__img"
+      :src="baseImgUrl + selectedMovieDetails.backdrop_path"
+      alt=""
+    />
+    <HeaderComponent></HeaderComponent>
+    <main class="main-movie">
+      <div class="trial">
+        <img
+          class="trial__image"
+          :src="baseImgUrl + selectedMovieDetails.poster_path"
+          :alt="selectedMovieDetails.title"
+        />
+      </div>
 
-    <div class="titles">
-      <div class="titles-container">
-        <h1 class="titles__main-title">
-          {{ selectedMovieDetails.title }}
-        </h1>
-        <p class="titles__year">
-          {{ selectedMovieDetails.release_date?.split("-")[0] }}
-        </p>
-        <p class="titles__runtime">
-          {{ selectedMovieDetails.runtime }} min |
-          <span class="titles__category">
-            {{
-              selectedMovieDetails.genres?.map((gener) => gener.name).join(", ")
-            }}
-          </span>
-        </p>
-        <div class="rating-container">
-          <i class="rating-container__star fas fa-star fa-2x"></i>
-          <p>
-            <strong class="rating-container__rate">{{
-              selectedMovieDetails.vote_average
-            }}</strong
-            >/ 10
+      <div class="titles">
+        <div class="titles-container">
+          <h1 class="titles__main-title">
+            {{ selectedMovieDetails.title }}
+          </h1>
+          <p class="titles__year">
+            {{ selectedMovieDetails.release_date?.split("-")[0] }}
           </p>
+          <p class="titles__runtime">
+            {{ selectedMovieDetails.runtime }} min |
+            <span class="titles__category">
+              {{
+                selectedMovieDetails.genres
+                  ?.map((gener) => gener.name)
+                  .join(", ")
+              }}
+            </span>
+          </p>
+          <div class="rating-container">
+            <i class="rating-container__star fas fa-star fa-2x"></i>
+            <p>
+              <strong class="rating-container__rate">{{
+                selectedMovieDetails.vote_average
+              }}</strong
+              >/ 10
+            </p>
 
-          <i class="rating-container__imdb fab fa-imdb fa-3x"></i>
+            <i class="rating-container__imdb fab fa-imdb fa-3x"></i>
+          </div>
+          <p class="titles__summary">
+            {{ selectedMovieDetails.overview?.split(" ").slice(-30).join(" ") }}
+          </p>
         </div>
-        <p class="titles__summary">
-          {{ selectedMovieDetails.overview?.split(" ").slice(-30).join(" ") }}
-        </p>
+        <div class="buttons">
+          <a :href="youtubeBaseUrl + trailVideoLink">
+            <button class="buttons__btn trial">Watch trial</button>
+          </a>
+          <button class="buttons__btn move">Watch Movie</button>
+        </div>
       </div>
-      <div class="buttons">
-        <a :href="youtubeBaseUrl + trailVideoLink">
-          <button class="buttons__btn trial">Watch trial</button>
-        </a>
-        <button class="buttons__btn move">Watch Movie</button>
-      </div>
-    </div>
-  </main>
+    </main>
+  </div>
 
   <section class="cast-section">
     <div class="cast">
@@ -118,18 +127,19 @@ body {
   background-color: #252222;
 }
 
+.main-movie {
+  padding-bottom: 40px;
+}
+
 .cast-section {
-  background-color: rgb(48, 45, 42);
   margin-left: $crew-margin-left;
   margin-right: $crew-margin-right;
   margin-top: $crew-margin-top;
-  border-top: 1px solid #fff;
-
   .cast {
     &__title {
       font-weight: 500;
       color: #fff;
-      margin-top: 25px;
+      margin-top: 0;
     }
 
     &__cast-cards {
@@ -137,7 +147,7 @@ body {
       flex-direction: row;
       justify-content: space-between;
       flex-wrap: wrap;
-      margin-top: -12px;
+      margin-top: -20px;
 
       .cast-card {
         margin-top: 25px;

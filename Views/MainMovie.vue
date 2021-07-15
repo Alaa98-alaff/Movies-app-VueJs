@@ -1,50 +1,57 @@
 <template>
-  <HeaderComponent></HeaderComponent>
-  <main class="main-movie">
-    <div class="trial">
-      <img
-        class="trial__image"
-        :src="baseImgUrl + movieDetails.poster_path"
-        :alt="movieDetails.title"
-      />
-    </div>
+  <div class="background-img">
+    <img
+      class="background-img__img"
+      :src="baseImgUrl + movieDetails.backdrop_path"
+      alt=""
+    />
+    <HeaderComponent></HeaderComponent>
+    <main class="main-movie">
+      <div class="trial">
+        <img
+          class="trial__image"
+          :src="baseImgUrl + movieDetails.poster_path"
+          :alt="movieDetails.title"
+        />
+      </div>
 
-    <div class="titles">
-      <div class="titles-container">
-        <h1 class="titles__main-title">
-          {{ movieDetails.title }}
-        </h1>
-        <p class="titles__year">
-          {{ movieDetails.release_date?.split("-")[0] }}
-        </p>
-        <p class="titles__runtime">
-          {{ movieDetails.runtime }} min |
-          <span class="titles__category">
-            {{ movieDetails.genres?.map((gener) => gener.name).join(", ") }}
-          </span>
-        </p>
-        <div class="rating-container">
-          <i class="rating-container__star fas fa-star fa-2x"></i>
-          <p>
-            <strong class="rating-container__rate">{{
-              movieDetails.vote_average
-            }}</strong
-            >/ 10
+      <div class="titles">
+        <div class="titles-container">
+          <h1 class="titles__main-title">
+            {{ movieDetails.title }}
+          </h1>
+          <p class="titles__year">
+            {{ movieDetails.release_date?.split("-")[0] }}
           </p>
+          <p class="titles__runtime">
+            {{ movieDetails.runtime }} min |
+            <span class="titles__category">
+              {{ movieDetails.genres?.map((gener) => gener.name).join(", ") }}
+            </span>
+          </p>
+          <div class="rating-container">
+            <i class="rating-container__star fas fa-star fa-2x"></i>
+            <p>
+              <strong class="rating-container__rate">{{
+                movieDetails.vote_average
+              }}</strong
+              >/ 10
+            </p>
 
-          <i class="rating-container__imdb fab fa-imdb fa-3x"></i>
+            <i class="rating-container__imdb fab fa-imdb fa-3x"></i>
+          </div>
+          <p class="titles__summary">
+            {{ movieDetails.overview?.split(" ").slice(-35).join(" ") }}
+          </p>
         </div>
-        <p class="titles__summary">
-          {{ movieDetails.overview?.split(" ").slice(-35).join(" ") }}
-        </p>
+        <div class="buttons">
+          <button class="buttons__btn trial">Watch trial</button>
+          <button class="buttons__btn move">Watch Movie</button>
+        </div>
       </div>
-      <div class="buttons">
-        <button class="buttons__btn trial">Watch trial</button>
-        <button class="buttons__btn move">Watch Movie</button>
-      </div>
-    </div>
-  </main>
-  <NewMoviesComponent></NewMoviesComponent>
+    </main>
+    <NewMoviesComponent></NewMoviesComponent>
+  </div>
 </template>
 
 <script>
@@ -70,10 +77,11 @@ export default {
       await fetch(
         `https://api.themoviedb.org/3/movie/${id}?api_key=${
           import.meta.env.VITE_API_KEY
-        }`
+        }&append_to_response=images`
       )
         .then((response) => response.json())
         .then((data) => {
+          console.log(data);
           movieDetails.value = data;
         });
     }
@@ -91,6 +99,22 @@ export default {
 </script>
 
 <style lang="scss">
+.background-img {
+  position: relative;
+
+  &__img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    opacity: 0.3;
+    z-index: -1;
+    filter: blur(5px);
+  }
+}
+
 .main-movie {
   display: flex;
   justify-content: flex-start;
