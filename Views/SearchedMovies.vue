@@ -61,12 +61,7 @@ export default {
               searhedMoviesArray.value.push(movie);
             }
           });
-
-          //   searhedMoviesArray.value = data.results;
-          // console.log(data);
         });
-
-      // console.log(searhedMoviesArray.value);
     }
 
     watch(
@@ -93,12 +88,10 @@ export default {
 <style lang="scss">
 body {
   height: 100%;
-  // min-height: 100vh;
 }
 
 .searhed-movies-main {
   height: 100%;
-  // min-height: 100vh;
   background-color: $main-background-color;
 }
 
@@ -112,14 +105,23 @@ body {
 }
 
 .searched-movie-card {
-  width: 200px;
+  width: 240px;
   height: 320px;
   background-color: #fff;
   margin-bottom: 110px;
   margin-right: 60px;
+  cursor: pointer;
+
+  :hover > &__img {
+    opacity: 1;
+    transition: opacity 0.2s;
+  }
 
   &__img {
     height: 100%;
+    width: 100%;
+    opacity: 0.95;
+    transition: opacity 0.5s;
   }
 
   .title-continer {
