@@ -130,7 +130,7 @@ export default {
     transform: translate(-50%, -50%);
     opacity: 0.3;
     z-index: -1;
-    filter: blur(5px);
+    filter: blur(2.7px);
   }
 }
 
@@ -141,7 +141,6 @@ export default {
   margin-right: $main-margin-right;
   margin-left: $main-margin-left;
   margin-top: $main-margin-top;
-  padding-bottom: 20px;
 }
 
 .trial {

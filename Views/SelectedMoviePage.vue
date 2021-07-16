@@ -6,7 +6,7 @@
       alt=""
     />
     <HeaderComponent></HeaderComponent>
-    <main class="main-movie">
+    <main class="main-movie selected">
       <div class="trial">
         <img
           class="trial__image"
@@ -130,6 +130,10 @@ body {
   padding-bottom: 40px;
 }
 
+.selected {
+  padding-bottom: 80px;
+}
+
 .titles__category {
   font-size: 14px;
 }
@@ -150,7 +154,7 @@ body {
       flex-direction: row;
       justify-content: space-between;
       flex-wrap: wrap;
-      margin-top: -20px;
+      margin-top: -32px;
 
       .cast-card {
         margin-top: 25px;
