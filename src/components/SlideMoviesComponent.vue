@@ -1,11 +1,13 @@
 <template>
   <Carousel :settings="settings" :breakpoints="breakpoints" class="movies-bar">
     <div v-for="movie in sortedMovies" :key="movie.id" class="movie-card">
-      <img
-        class="movie-card__img"
-        :src="imgBaseUrl + movie.poster_path"
-        alt=""
-      />
+      <router-link :to="'/search/' + movie.title + '/' + movie.id">
+        <img
+          class="movie-card__img"
+          :src="imgBaseUrl + movie.poster_path"
+          alt=""
+        />
+      </router-link>
     </div>
 
     <template #addons>
@@ -57,24 +59,36 @@ export default defineComponent({
 <style lang="scss">
 .movies-bar {
   height: 340px;
-  margin-left: 90px;
-  margin-right: 90px;
+  margin-left: 140px;
+  margin-right: 140px;
 }
 
 .movie-card {
-  width: 222px;
+  width: 202px;
   height: 340px;
   margin: 6px;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.4s;
+
+  &:hover {
+    opacity: 1;
+    transition: opacity 0.4s;
+  }
 
   &__img {
-    width: 222px;
+    width: 202px;
     height: 340px;
   }
 }
 
 .nav-icon {
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
+
+  &:active {
+    background-color: rgb(12, 22, 66);
+  }
 }
 </style>

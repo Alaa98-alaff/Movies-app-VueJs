@@ -66,7 +66,6 @@ import HeaderComponent from "../src/components/HeaderComponent.vue";
 import NewMoviesComponent from "../src/components/NewMoviesComponent.vue";
 import SortMoviesComponent from "../src/components/SortedMoviesComponent.vue";
 
-
 export default {
   props: ["id"],
   components: { HeaderComponent, NewMoviesComponent, SortMoviesComponent },
@@ -93,7 +92,7 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          trailVideoLink.value = data.videos.results[0].key;
+          trailVideoLink.value = data.videos?.results[0].key;
           movieDetails.value = data;
         });
     }

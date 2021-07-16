@@ -1,6 +1,7 @@
 <template>
-  <button @click="findPopularMovies">Populars</button>
+  <button @click="findPopularMovies">Popular</button>
   <button @click="findActionMovies">Action</button>
+  <h2 class="sort-title">Type: {{ sortTitle }}</h2>
   <SlideMoviesComponent
     :sortedMovies="movieArr"
     :imgBaseUrl="baseImgUrl"
@@ -15,10 +16,12 @@ export default {
   components: { SlideMoviesComponent },
 
   setup() {
+    let sortTitle = ref("");
     let movieArr = ref();
     let baseImgUrl = ref("https://image.tmdb.org/t/p/w500");
 
     async function findPopularMovies() {
+      sortTitle.value = "Populars";
       await fetch(
         `https://api.themoviedb.org/3/discover/movie?api_key=${
           import.meta.env.VITE_API_KEY
@@ -34,6 +37,8 @@ export default {
     findPopularMovies();
 
     async function findActionMovies() {
+      sortTitle.value = "Action";
+
       await fetch(
         `https://api.themoviedb.org/3/discover/movie?api_key=${
           import.meta.env.VITE_API_KEY
@@ -46,9 +51,20 @@ export default {
         });
     }
 
-    return { findPopularMovies, findActionMovies, movieArr, baseImgUrl };
+    return {
+      findPopularMovies,
+      findActionMovies,
+      movieArr,
+      baseImgUrl,
+      sortTitle,
+    };
   },
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+}
+</style>
