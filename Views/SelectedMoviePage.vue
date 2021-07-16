@@ -101,6 +101,7 @@ export default {
       )
         .then((response) => response.json())
         .then((data) => {
+          console.log(data);
           selectedMovieDetails.value = data;
           castArr.value = data.credits.cast.slice(0, 8);
           trailVideoLink.value = data.videos.results[0].key;

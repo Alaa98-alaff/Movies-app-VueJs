@@ -1,7 +1,63 @@
 <template>
-  <button @click="findPopularMovies">Popular</button>
-  <button @click="findActionMovies">Action</button>
-  <h2 class="sort-title">Type: {{ sortTitle }}</h2>
+  <nav class="sort-nav">
+    <p
+      tabindex="0"
+      class="sort-nav__type"
+      :class="sortTitle === 'Populars' ? 'active' : ''"
+      @click="findPopularMovies"
+    >
+      Popular
+    </p>
+    <p
+      tabindex="0"
+      class="sort-nav__type"
+      :class="sortTitle === 'Horror' ? 'active' : ''"
+      @click="findHorrorMovies"
+    >
+      Horror
+    </p>
+    <p
+      tabindex="0"
+      class="sort-nav__type"
+      :class="sortTitle === 'Action' ? 'active' : ''"
+      @click="findActionMovies"
+    >
+      Action
+    </p>
+    <p
+      tabindex="0"
+      class="sort-nav__type"
+      :class="sortTitle === 'Comedy' ? 'active' : ''"
+      @click="findComedyMovies"
+    >
+      Comedy
+    </p>
+    <p
+      tabindex="0"
+      class="sort-nav__type"
+      :class="sortTitle === 'Drama' ? 'active' : ''"
+      @click="findDramaMovies"
+    >
+      Drama
+    </p>
+    <p
+      tabindex="0"
+      class="sort-nav__type"
+      :class="sortTitle === 'Romance' ? 'active' : ''"
+      @click="findRomanceMovies"
+    >
+      Romance
+    </p>
+    <p
+      tabindex="0"
+      class="sort-nav__type"
+      :class="sortTitle === 'Family' ? 'active' : ''"
+      @click="findFamilyMovies"
+    >
+      Family
+    </p>
+  </nav>
+
   <SlideMoviesComponent
     :sortedMovies="movieArr"
     :imgBaseUrl="baseImgUrl"
@@ -31,40 +87,92 @@ export default {
         .then((data) => {
           movieArr.value = data.results;
           console.log(movieArr.value);
-          console.log(data);
         });
     }
     findPopularMovies();
 
-    async function findActionMovies() {
-      sortTitle.value = "Action";
+    async function findSortedMoviesByID(id, type) {
+      sortTitle.value = type;
 
       await fetch(
         `https://api.themoviedb.org/3/discover/movie?api_key=${
           import.meta.env.VITE_API_KEY
-        }&with_genres=28`
+        }&with_genres=${id}`
       )
         .then((response) => response.json())
         .then((data) => {
           movieArr.value = data.results;
-          console.log(data);
         });
+    }
+
+    function findActionMovies() {
+      findSortedMoviesByID("28", "Action");
+    }
+
+    function findComedyMovies() {
+      findSortedMoviesByID("35", "Comedy");
+    }
+
+    function findDramaMovies() {
+      findSortedMoviesByID("18", "Drama");
+    }
+
+    function findHorrorMovies() {
+      findSortedMoviesByID("27", "Horror");
+    }
+
+    function findRomanceMovies() {
+      findSortedMoviesByID("10749", "Romance");
+    }
+
+    function findFamilyMovies() {
+      findSortedMoviesByID("10751", "Family");
     }
 
     return {
       findPopularMovies,
-      findActionMovies,
+      findSortedMoviesByID,
       movieArr,
       baseImgUrl,
       sortTitle,
+      findActionMovies,
+      findComedyMovies,
+      findDramaMovies,
+      findHorrorMovies,
+      findRomanceMovies,
+      findFamilyMovies,
     };
   },
 };
 </script>
 
 <style lang="scss">
-* {
-  margin: 0;
-  padding: 0;
+.sort-nav {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: $silde-margin-left;
+  margin-right: $silde-margin-right;
+  height: 80px;
+
+  &__type {
+    color: #fff;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(143, 48, 48);
+      transition: all 0.2s;
+    }
+  }
+}
+
+.active {
+  color: rgb(143, 48, 48);
+  font-weight: bolder;
+  font-size: 25px;
+  transition: all 0.03s;
 }
 </style>

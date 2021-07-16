@@ -59,8 +59,8 @@ export default defineComponent({
 <style lang="scss">
 .movies-bar {
   height: 340px;
-  margin-left: 140px;
-  margin-right: 140px;
+  margin-left: $silde-margin-left;
+  margin-right: $silde-margin-right;
 }
 
 .movie-card {
