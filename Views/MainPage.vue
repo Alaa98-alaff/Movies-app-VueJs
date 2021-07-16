@@ -66,6 +66,7 @@ import HeaderComponent from "../src/components/HeaderComponent.vue";
 import NewMoviesComponent from "../src/components/NewMoviesComponent.vue";
 import SortMoviesComponent from "../src/components/SortedMoviesComponent.vue";
 
+
 export default {
   props: ["id"],
   components: { HeaderComponent, NewMoviesComponent, SortMoviesComponent },

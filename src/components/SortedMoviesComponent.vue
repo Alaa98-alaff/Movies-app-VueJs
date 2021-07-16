@@ -1,15 +1,19 @@
 <template>
   <button @click="findPopularMovies">Populars</button>
   <button @click="findActionMovies">Action</button>
-  <h1 v-for="movie in movieArr" :key="movie.id">
-    <img :src="baseImgUrl + movie?.poster_path" alt="" />
-  </h1>
+  <SlideMoviesComponent
+    :sortedMovies="movieArr"
+    :imgBaseUrl="baseImgUrl"
+  ></SlideMoviesComponent>
 </template>
 
 <script>
 import { ref } from "vue";
+import SlideMoviesComponent from "./SlideMoviesComponent.vue";
 
 export default {
+  components: { SlideMoviesComponent },
+
   setup() {
     let movieArr = ref();
     let baseImgUrl = ref("https://image.tmdb.org/t/p/w500");
