@@ -10,7 +10,7 @@
 
     <template #addons>
       <Pagination />
-      <Navigation />
+      <Navigation class="nav-icon" />
     </template>
   </Carousel>
 </template>
@@ -46,7 +46,7 @@ export default defineComponent({
       },
       // 1024 and up
       1024: {
-        itemsToShow: 5,
+        itemsToShow: 6,
         snapAlign: "start",
       },
     },
@@ -56,16 +56,25 @@ export default defineComponent({
 
 <style lang="scss">
 .movies-bar {
-  height: 400px;
+  height: 350px;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .movie-card {
-  width: 265px;
-  height: 400px;
+  width: 203px;
+  height: 350px;
+  margin: 3px;
 
   &__img {
-    width: 265px;
-    height: 400px;
+    width: 203px;
+    height: 350px;
   }
+}
+
+.nav-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
 }
 </style>
