@@ -52,14 +52,15 @@
         </div>
       </div>
     </main>
-    <NewMoviesComponent></NewMoviesComponent>
+    <NewMoviesComponent
+      @newMovieRandomId="GetNewMovieRandomId"
+    ></NewMoviesComponent>
   </div>
   <SortMoviesComponent></SortMoviesComponent>
 </template>
 
 <script>
-import { onBeforeMount, ref } from "vue";
-import { useRoute } from "vue-router";
+import { ref, watch } from "vue";
 
 import HeaderComponent from "../src/components/HeaderComponent.vue";
 import NewMoviesComponent from "../src/components/NewMoviesComponent.vue";
@@ -70,15 +71,19 @@ export default {
   components: { HeaderComponent, NewMoviesComponent, SortMoviesComponent },
 
   setup(props) {
-    let route = useRoute();
-    let routeParamsID = ref(route.params.id);
+    let randomId = ref();
     let movieDetails = ref({});
     let baseImgUrl = ref("https://image.tmdb.org/t/p/w500");
     let trailVideoLink = ref("");
     let youtubeBaseUrl = ref("https://www.youtube.com/watch?v=");
 
+    function GetNewMovieRandomId(id) {
+      randomId.value = id;
+    }
+    GetNewMovieRandomId();
+
     // watch and update the movie when movie id change
-    async function getMovieInfoWithID(id = 637649) {
+    async function getMovieInfoWithID(id) {
       await fetch(
         `https://api.themoviedb.org/3/movie/${id}?api_key=${
           import.meta.env.VITE_API_KEY
@@ -92,15 +97,21 @@ export default {
         });
     }
 
-    getMovieInfoWithID(routeParamsID.value);
+    watch(
+      () => randomId.value,
+      (newValue) => getMovieInfoWithID(newValue)
+    );
+
+    getMovieInfoWithID(randomId.value);
 
     return {
       movieDetails,
       getMovieInfoWithID,
       baseImgUrl,
-      routeParamsID,
       trailVideoLink,
       youtubeBaseUrl,
+      GetNewMovieRandomId,
+      randomId,
     };
   },
 };

@@ -7,7 +7,7 @@
         :key="movie.id"
         :to="/search/ + movie.title + '/' + movie.id"
       >
-        <div class="new-movie" @click="testWatch($event, movie.id)">
+        <div class="new-movie">
           <img
             class="new-movie__img"
             :src="movieImgUrl + movie.backdrop_path"
@@ -27,7 +27,8 @@ import { ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 
 export default {
-  setup() {
+  emits: ["newMovieRandomId"],
+  setup(props, { emit }) {
     const route = useRoute();
     let routeParamsID = ref(route.params.id);
 
@@ -50,20 +51,18 @@ export default {
             newMovieRandomID.value = data.results[i].id;
             console.log(newMovieRandomID.value);
           }
+          emit(
+            "newMovieRandomId",
+            data.results[data.results.length - randomOne].id
+          );
         });
     };
     newTopMovies();
-
-    function testWatch(_, id) {
-      // routeParamsID.value = route.params.id;
-      console.log(id);
-    }
 
     return {
       newTopMovies,
       newMoviesObj,
       movieImgUrl,
-      testWatch,
       newMovieRandomID,
     };
   },
