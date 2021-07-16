@@ -124,6 +124,8 @@ export default {
 <style lang="scss">
 body {
   background-color: #252222;
+  margin: 0;
+  padding: 0;
 }
 
 .main-movie {

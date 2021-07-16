@@ -46,7 +46,7 @@ export default defineComponent({
       },
       // 1024 and up
       1024: {
-        itemsToShow: 6,
+        itemsToShow: 5,
         snapAlign: "start",
       },
     },
@@ -56,19 +56,19 @@ export default defineComponent({
 
 <style lang="scss">
 .movies-bar {
-  height: 350px;
-  margin-left: 40px;
-  margin-right: 40px;
+  height: 340px;
+  margin-left: 90px;
+  margin-right: 90px;
 }
 
 .movie-card {
-  width: 203px;
-  height: 350px;
-  margin: 3px;
+  width: 222px;
+  height: 340px;
+  margin: 6px;
 
   &__img {
-    width: 203px;
-    height: 350px;
+    width: 222px;
+    height: 340px;
   }
 }
 
