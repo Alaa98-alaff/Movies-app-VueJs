@@ -130,6 +130,7 @@ export default {
   margin-right: $main-margin-right;
   margin-left: $main-margin-left;
   margin-top: $main-margin-top;
+  padding-bottom: 20px;
 }
 
 .trial {

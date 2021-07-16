@@ -45,7 +45,7 @@
             <i class="rating-container__imdb fab fa-imdb fa-3x"></i>
           </div>
           <p class="titles__summary">
-            {{ selectedMovieDetails.overview?.split(" ").slice(-30).join(" ") }}
+            {{ selectedMovieDetails.overview?.split(" ").slice(-20).join(" ") }}
           </p>
         </div>
         <div class="buttons">
@@ -101,7 +101,6 @@ export default {
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           selectedMovieDetails.value = data;
           castArr.value = data.credits.cast.slice(0, 8);
           trailVideoLink.value = data.videos.results[0].key;
@@ -129,6 +128,10 @@ body {
 
 .main-movie {
   padding-bottom: 40px;
+}
+
+.titles__category {
+  font-size: 14px;
 }
 
 .cast-section {
@@ -162,11 +165,13 @@ body {
         &__name {
           color: #fff;
           word-wrap: break-word;
+          margin: 0;
         }
 
         &__character {
           color: rgb(158, 145, 145);
           font-size: 12px;
+          margin: 0;
         }
       }
     }

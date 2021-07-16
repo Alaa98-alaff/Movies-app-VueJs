@@ -14,7 +14,7 @@
             :alt="movie.title"
           />
           <p class="new-movie__title">
-            {{ movie.title.split(" ").slice(-4).join(" ") }}
+            {{ movie.title.split(" ").slice(-3).join(" ") }}
           </p>
         </div>
       </router-link>
@@ -91,8 +91,8 @@ export default {
   align-items: center;
 
   .new-movie {
-    width: 160px;
-    height: 80px;
+    width: 150px;
+    height: 90px;
     border-radius: 10px;
     color: #fff;
     display: flex;
@@ -108,27 +108,25 @@ export default {
     }
 
     &:hover > .new-movie__title {
-      top: 50%;
+      top: 20%;
       left: 50%;
-      transform: translate(-50%, -50%);
-      transition: transform 0.45s;
-      font-size: 14px;
-      font-weight: 600;
+      transform: translate(-50%, -20%);
+      transition: all 0.45s;
     }
 
     &:hover > .new-movie__title::after {
       opacity: 1;
-      transform: translate3d(0, 0.2em, 0);
+      transform: translate3d(0, 3.3em, 0);
     }
 
     &__title {
       font-size: 13px;
-      // font-weight: 600;
       position: absolute;
-      padding-bottom: 5px;
+      top: 60%;
       left: 50%;
-      transform: translate(-50%);
-      transition: transform 0.5s;
+      transform: translate(-50%, -60%);
+      transition: all 0.5s;
+      width: 100%;
 
       &::after {
         content: "";
@@ -140,7 +138,7 @@ export default {
         background-color: $red-color;
         opacity: 0;
         border-radius: 20px;
-        transition: opacity 300ms, transform 300ms;
+        // transition: opacity 300ms, transsform 100ms;
       }
     }
 
