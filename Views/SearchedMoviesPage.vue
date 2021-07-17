@@ -125,17 +125,18 @@ body {
   }
 
   .title-continer {
-    width: 213px;
-
     &__title {
       color: #fff;
       word-wrap: break-word;
-      font-weight: 600;
       font-size: 15px;
+      margin: 0;
+      padding: 0;
     }
 
     &__year {
       color: #fff;
+      margin: 0;
+      padding: 0;
     }
   }
 }

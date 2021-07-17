@@ -4,10 +4,12 @@
       <h1 class="titleBox__title">Top Rated Movies</h1>
       <i class="fas fa-arrow-up fa-2x"></i>
     </div>
-    <div class="view-all">
-      <p class="view-all__title">View All</p>
-      <i class="fas fa-arrow-right"></i>
-    </div>
+    <router-link class="router-link" to="/top-rated-movies">
+      <div class="view-all">
+        <p class="view-all__title">View All</p>
+        <i class="fas fa-arrow-right"></i>
+      </div>
+    </router-link>
   </div>
   <main class="topRated-movies-main">
     <div class="topRated-movies-container">
@@ -154,5 +156,9 @@ export default {
     width: 200px;
     height: 270px;
   }
+}
+
+.router-link {
+  text-decoration: none;
 }
 </style>
