@@ -149,7 +149,6 @@ export default {
   align-items: flex-start;
   margin-right: $main-margin-right;
   margin-left: $main-margin-left;
-  margin-top: $main-margin-top;
 }
 
 .trial {

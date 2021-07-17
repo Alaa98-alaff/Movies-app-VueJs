@@ -1,6 +1,8 @@
 <template>
   <section class="new-movies-container">
-    <p class="new-movies-container__title">Similar Movies</p>
+    <p class="new-movies-container__title">
+      {{ similarMoviesObject.length !== 0 ? "Similar Movies" : "" }}
+    </p>
     <div class="new-movies">
       <router-link
         v-for="movie in similarMoviesObject"
@@ -42,7 +44,9 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          similarMoviesObject.value = data.results.slice(0, 5);
+          if (data.results.length != 0) {
+            similarMoviesObject.value = data.results.slice(0, 5);
+          }
         });
     }
 

@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import HeaderComponent from "../src/components/HeaderComponent.vue";
 import SimilarMoviesComponent from "../src/components/SimilarMoviesComponent.vue";
 
@@ -112,6 +112,11 @@ export default {
     }
     getSelectedMovieDetails(movieID.value);
 
+    watch(
+      () => props.id,
+      (newValue) => getSelectedMovieDetails(newValue)
+    );
+
     return {
       getSelectedMovieDetails,
       selectedMovieDetails,
@@ -138,7 +143,7 @@ body {
 }
 
 .selected {
-  padding-bottom: 80px;
+  padding-bottom: 40px;
 }
 
 .titles__category {

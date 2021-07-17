@@ -54,6 +54,7 @@ export default {
   align-items: center;
   height: 100px;
   padding: 0 40px 0 40px;
+  height: 75px;
 
   &__logo {
     display: flex;
@@ -75,7 +76,7 @@ export default {
 
 .search-container {
   background-color: $logo-red-color;
-  height: 30px;
+  height: 25px;
   border-radius: 40px;
   padding: 10px 20px;
   display: flex;

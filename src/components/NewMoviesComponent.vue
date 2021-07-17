@@ -1,6 +1,9 @@
 <template>
   <section class="new-movies-container">
-    <p class="new-movies-container__title">New Movies</p>
+    <div class="new-movies-title">
+      <p class="new-movies-container__title">New Movies</p>
+      <i class="fas fa-fire fa-lg"></i>
+    </div>
     <div class="new-movies">
       <router-link
         v-for="movie in newMoviesObj"
@@ -81,7 +84,17 @@ export default {
   &__title {
     color: #fff;
     font-weight: 500;
-    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+
+  .new-movies-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .fa-fire {
+      color: #fff;
+    }
   }
 }
 
@@ -90,6 +103,7 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: -5px;
 
   .new-movie {
     width: 150px;
