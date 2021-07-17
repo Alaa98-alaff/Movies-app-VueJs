@@ -56,6 +56,7 @@
         </div>
       </div>
     </main>
+    <SimilarMoviesComponent :movieId="movieID"></SimilarMoviesComponent>
   </div>
 
   <section class="cast-section">
@@ -77,18 +78,18 @@
 </template>
 
 <script>
-import routing from "../router/index";
-
 import { ref } from "vue";
 import HeaderComponent from "../src/components/HeaderComponent.vue";
+import SimilarMoviesComponent from "../src/components/SimilarMoviesComponent.vue";
 
 export default {
   props: ["name", "id"],
-  components: { HeaderComponent },
+  components: { HeaderComponent, SimilarMoviesComponent },
 
   setup(props) {
     window.scrollTo(0, 0);
 
+    let movieID = ref(props.id);
     let baseImgUrl = ref("https://image.tmdb.org/t/p/w500");
     let selectedMovieDetails = ref({});
     let castArr = ref([]);
@@ -109,7 +110,7 @@ export default {
           trailVideoLink.value = data.videos.results[0].key;
         });
     }
-    getSelectedMovieDetails(props.id);
+    getSelectedMovieDetails(movieID.value);
 
     return {
       getSelectedMovieDetails,
@@ -119,6 +120,7 @@ export default {
       trailVideoLink,
       trailVideoLink,
       youtubeBaseUrl,
+      movieID,
     };
   },
 };

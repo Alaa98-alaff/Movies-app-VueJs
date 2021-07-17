@@ -109,15 +109,15 @@ export default {
     }
 
     &:hover > .new-movie__title {
-      top: 20%;
+      top: 22%;
       left: 50%;
-      transform: translate(-50%, -20%);
+      transform: translate(-50%, -22%);
       transition: all 0.45s;
     }
 
     &:hover > .new-movie__title::after {
       opacity: 1;
-      transform: translate3d(0, 3.3em, 0);
+      transform: translate3d(0, 3.4em, 0);
     }
 
     &__title {
@@ -144,7 +144,7 @@ export default {
     }
 
     &__img {
-      width: 150px;
+      width: 145px;
       height: 90px;
       border-radius: 8px;
       transition: all 0.5s;
