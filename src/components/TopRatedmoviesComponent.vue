@@ -1,8 +1,15 @@
 <template>
-  <div class="topRated-titleBox">
-    <h1 class="topRated-titleBox__title">Top Rated Movies</h1>
-    <i class="fas fa-arrow-up fa-2x"></i>
+  <div class="topRated-title">
+    <div class="titleBox">
+      <h1 class="titleBox__title">Top Rated Movies</h1>
+      <i class="fas fa-arrow-up fa-2x"></i>
+    </div>
+    <div class="view-all">
+      <p class="view-all__title">View All</p>
+      <i class="fas fa-arrow-right"></i>
+    </div>
   </div>
+
   <main class="topRated-movies-main">
     <div class="topRated-movies-container">
       <div class="firstTop-movie">
@@ -58,11 +65,38 @@ export default {
 </script>
 
 <style lang="scss">
-.topRated-titleBox {
-  margin-left: 175px;
-  margin-right: 175px;
+.topRated-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 160px;
+  //   margin-right: 175px;
+  width: 995px;
   margin-top: 90px;
   margin-bottom: 5px;
+
+  .view-all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(112, 102, 102);
+    }
+
+    &:active {
+      color: rgb(87, 43, 43);
+    }
+
+    &__title {
+      margin-right: 5px;
+    }
+  }
+}
+
+.titleBox {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -107,6 +141,7 @@ export default {
   align-items: center;
   flex-flow: wrap;
   width: 700px;
+  margin-bottom: 40px;
 }
 
 .topRated-movie-card {
