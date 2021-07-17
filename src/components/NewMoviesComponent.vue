@@ -116,6 +116,7 @@ export default {
     position: relative;
     text-align: center;
 
+
     &:hover > .new-movie__img {
       opacity: 1;
       transition: all 0.5s;

@@ -52,13 +52,16 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
   padding: 0 40px 0 40px;
   height: 75px;
 
   &__logo {
     display: flex;
     margin: 0;
+
+    @include respond(phone) {
+      font-size: 25px;
+    }
 
     &:hover {
       cursor: pointer;
@@ -88,10 +91,19 @@ export default {
   box-shadow: 4px 4px 6px 0 rgba(175, 32, 32, 0.3),
     -2px -2px 4px 0 rgba(0, 0, 0, 0.2), -2px -2px 4px 0 rgba(148, 69, 69, 0.2),
     4px 4px 6px 0 rgba(136, 34, 34, 0.2);
+
+  @include respond(phone) {
+    height: 10px;
+  }
 }
 
 .search-container:hover > .search-input {
   width: 250px;
+
+  @include respond(phone) {
+    width: 100px;
+    font-size: 10px;
+  }
 }
 
 .search-container .search-input {
