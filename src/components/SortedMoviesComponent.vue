@@ -86,7 +86,6 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           movieArr.value = data.results;
-          console.log(movieArr.value);
         });
     }
     findPopularMovies();

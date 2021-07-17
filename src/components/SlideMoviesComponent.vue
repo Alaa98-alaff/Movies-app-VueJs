@@ -61,6 +61,7 @@ export default defineComponent({
   height: 340px;
   margin-left: $silde-margin-left;
   margin-right: $silde-margin-right;
+  margin-bottom: 70px;
 }
 
 .movie-card {

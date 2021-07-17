@@ -57,6 +57,7 @@
     ></NewMoviesComponent>
   </div>
   <SortMoviesComponent></SortMoviesComponent>
+  <TopRatedmoviesComponent></TopRatedmoviesComponent>
 </template>
 
 <script>
@@ -65,10 +66,16 @@ import { ref, watch } from "vue";
 import HeaderComponent from "../src/components/HeaderComponent.vue";
 import NewMoviesComponent from "../src/components/NewMoviesComponent.vue";
 import SortMoviesComponent from "../src/components/SortedMoviesComponent.vue";
+import TopRatedmoviesComponent from "../src/components/TopRatedmoviesComponent.vue";
 
 export default {
   props: ["id"],
-  components: { HeaderComponent, NewMoviesComponent, SortMoviesComponent },
+  components: {
+    HeaderComponent,
+    NewMoviesComponent,
+    SortMoviesComponent,
+    TopRatedmoviesComponent,
+  },
 
   setup(props) {
     let randomId = ref();
