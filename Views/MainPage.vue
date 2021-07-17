@@ -56,7 +56,7 @@
       @newMovieRandomId="GetNewMovieRandomId"
     ></NewMoviesComponent>
   </div>
-  <SortMoviesComponent></SortMoviesComponent>
+  <SortNavComponent></SortNavComponent>
   <TopRatedmoviesComponent></TopRatedmoviesComponent>
 </template>
 
@@ -65,7 +65,7 @@ import { ref, watch } from "vue";
 
 import HeaderComponent from "../src/components/HeaderComponent.vue";
 import NewMoviesComponent from "../src/components/NewMoviesComponent.vue";
-import SortMoviesComponent from "../src/components/SortedMoviesComponent.vue";
+import SortNavComponent from "../src/components/SortNavComponent.vue";
 import TopRatedmoviesComponent from "../src/components/TopRatedmoviesComponent.vue";
 
 export default {
@@ -73,7 +73,7 @@ export default {
   components: {
     HeaderComponent,
     NewMoviesComponent,
-    SortMoviesComponent,
+    SortNavComponent,
     TopRatedmoviesComponent,
   },
 

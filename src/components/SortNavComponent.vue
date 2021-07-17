@@ -147,7 +147,7 @@ export default {
 
 <style lang="scss">
 .sort-nav {
-  margin-top: 40px;
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

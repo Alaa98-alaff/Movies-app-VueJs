@@ -78,13 +78,13 @@ export default {
   align-items: center;
   margin-left: 160px;
   width: 995px;
-  margin-top: 90px;
+  margin-top: 105px;
 
   .view-all {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: $grey-color;
     cursor: pointer;
 
     &:hover {

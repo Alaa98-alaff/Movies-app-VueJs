@@ -76,7 +76,7 @@ export default {
   margin-right: $main-margin-right;
   margin-left: $main-margin-left;
   margin-top: -20px;
-  padding-bottom: 30px;
+  padding-bottom: 50px;
 
   &__title {
     color: #fff;
