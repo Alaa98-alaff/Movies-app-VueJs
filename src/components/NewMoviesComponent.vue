@@ -75,13 +75,13 @@ export default {
   flex-direction: column;
   margin-right: $main-margin-right;
   margin-left: $main-margin-left;
-  margin-top: -30px;
+  margin-top: -20px;
   padding-bottom: 30px;
 
   &__title {
     color: #fff;
     font-weight: 500;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 }
 

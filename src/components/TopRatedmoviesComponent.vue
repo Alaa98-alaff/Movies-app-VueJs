@@ -9,28 +9,33 @@
       <i class="fas fa-arrow-right"></i>
     </div>
   </div>
-
   <main class="topRated-movies-main">
     <div class="topRated-movies-container">
-      <div class="firstTop-movie">
-        <img
-          :src="baseImgUrl + firstTopMovie.poster_path"
-          alt=""
-          class="firstTop-movie__img"
-        />
-      </div>
+      <router-link
+        :to="'/search/' + firstTopMovie.title + '/' + firstTopMovie.id"
+      >
+        <div class="firstTop-movie">
+          <img
+            :src="baseImgUrl + firstTopMovie.poster_path"
+            alt=""
+            class="firstTop-movie__img"
+          />
+        </div>
+      </router-link>
       <div class="topRated-movies-cards">
         <div v-for="movie in topRatedMovies" :key="movie.id">
-          <div
-            class="topRated-movie-card"
-            @click="getSelectedMovieID(movie.id)"
-          >
-            <img
-              class="topRated-movie-card__img"
-              :src="baseImgUrl + movie.poster_path"
-              :alt="movie.title"
-            />
-          </div>
+          <router-link :to="'/search/' + movie.title + '/' + movie.id">
+            <div
+              class="topRated-movie-card"
+              @click="getSelectedMovieID(movie.id)"
+            >
+              <img
+                class="topRated-movie-card__img"
+                :src="baseImgUrl + movie.poster_path"
+                :alt="movie.title"
+              />
+            </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -70,10 +75,8 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-left: 160px;
-  //   margin-right: 175px;
   width: 995px;
   margin-top: 90px;
-  margin-bottom: 5px;
 
   .view-all {
     display: flex;
@@ -116,14 +119,12 @@ export default {
 
 .topRated-movies-main {
   flex-direction: column;
-  //   margin-top: 50px;
   display: flex;
   align-items: center;
 }
 
 .topRated-movies-container {
   display: flex;
-  //   align-items: flex-start;
 }
 
 .firstTop-movie {
@@ -131,7 +132,7 @@ export default {
 
   &__img {
     width: 320px;
-    height: 542px;
+    height: 560px;
   }
 }
 
@@ -146,12 +147,12 @@ export default {
 
 .topRated-movie-card {
   width: 200px;
-  height: 260px;
+  height: 270px;
   margin: 10px;
 
   &__img {
     width: 200px;
-    height: 260px;
+    height: 270px;
   }
 }
 </style>
