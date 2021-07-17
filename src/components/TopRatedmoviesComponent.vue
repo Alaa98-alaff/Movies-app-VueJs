@@ -76,7 +76,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 160px;
+  margin-left: 115px;
   width: 995px;
   margin-top: 105px;
 
@@ -124,6 +124,7 @@ export default {
   flex-direction: column;
   display: flex;
   align-items: center;
+  margin-left: 30px;
 }
 
 .topRated-movies-container {
