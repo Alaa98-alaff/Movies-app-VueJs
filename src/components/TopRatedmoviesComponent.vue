@@ -86,9 +86,10 @@ export default {
     justify-content: center;
     color: $grey-color;
     cursor: pointer;
+    font-size: 20px;
 
     &:hover {
-      color: rgb(112, 102, 102);
+      color: rgb(192, 79, 79);
     }
 
     &:active {

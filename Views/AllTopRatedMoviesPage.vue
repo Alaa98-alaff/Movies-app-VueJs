@@ -35,6 +35,8 @@ import HeaderComponent from "../src/components/HeaderComponent.vue";
 export default {
   components: { HeaderComponent },
   setup() {
+    window.scrollTo(0, 0);
+
     let alltopRatedMovies = ref([]);
     let baseImgUrl = ref("https://image.tmdb.org/t/p/w500");
 

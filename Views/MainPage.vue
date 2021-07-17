@@ -78,6 +78,8 @@ export default {
   },
 
   setup(props) {
+    window.scrollTo(0, 0);
+
     let randomId = ref();
     let movieDetails = ref({});
     let baseImgUrl = ref("https://image.tmdb.org/t/p/w500");

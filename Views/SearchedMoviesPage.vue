@@ -37,6 +37,8 @@ export default {
   props: ["name"],
 
   setup(props) {
+    window.scrollTo(0, 0);
+
     let searhedMoviesArray = ref([]);
     let baseImgUrl = ref("https://image.tmdb.org/t/p/w500");
 

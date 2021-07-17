@@ -87,6 +87,8 @@ export default {
   components: { HeaderComponent },
 
   setup(props) {
+    window.scrollTo(0, 0);
+
     let baseImgUrl = ref("https://image.tmdb.org/t/p/w500");
     let selectedMovieDetails = ref({});
     let castArr = ref([]);
