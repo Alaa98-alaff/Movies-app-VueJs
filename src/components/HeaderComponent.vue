@@ -16,7 +16,7 @@
           v-model="search"
           type="text"
           name="search"
-          placeholder="Search for Movies .."
+          placeholder="Movie Name .."
           class="search-input"
         />
 
@@ -149,7 +149,7 @@ export default {
 
   @include respond(phone) {
     width: 55px;
-    font-size: 6.5px;
+    font-size: 7.5px;
   }
 }
 

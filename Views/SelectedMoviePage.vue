@@ -171,6 +171,7 @@ body {
       margin-left: 30px;
       margin-bottom: 24px;
       font-size: 25px;
+      margin-top: -10px;
     }
 
     &__cast-cards {
