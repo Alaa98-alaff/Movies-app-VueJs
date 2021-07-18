@@ -175,8 +175,9 @@ export default {
       width: 100%;
 
       @include respond(phone) {
-        font-size: 38%;
+        font-size: 6px;
         top: 70%;
+        width: 65px;
       }
 
       &::after {
