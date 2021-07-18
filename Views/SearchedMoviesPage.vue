@@ -121,6 +121,7 @@ body {
   background-color: #fff;
   margin-bottom: 110px;
   margin: 20px;
+  margin-bottom: 70px;
   cursor: pointer;
 
   transition: all 300ms ease-in-out;
@@ -136,7 +137,7 @@ body {
     width: 130px;
     height: 160px;
     margin-top: 10px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     margin-left: 20px;
     margin-right: 20px;
   }
