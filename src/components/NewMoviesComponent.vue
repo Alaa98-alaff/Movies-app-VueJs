@@ -82,7 +82,7 @@ export default {
   padding-bottom: 50px;
 
   @include respond(phone) {
-    margin-left: 16px;
+    margin-left: 25px;
     width: 325px;
   }
 
@@ -94,6 +94,8 @@ export default {
     @include respond(phone) {
       font-size: 80%;
       margin: 4px;
+      margin-left: -15px;
+      margin-bottom: -1.5px;
     }
   }
 
@@ -131,7 +133,7 @@ export default {
     text-align: center;
 
     @include respond(phone) {
-      width: 40px;
+      width: 30px;
       height: 60px;
     }
 
@@ -175,7 +177,6 @@ export default {
       @include respond(phone) {
         font-size: 38%;
         top: 70%;
-        // width: 200px;
       }
 
       &::after {
