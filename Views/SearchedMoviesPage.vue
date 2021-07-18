@@ -106,6 +106,10 @@ body {
   justify-content: center;
   flex-flow: wrap;
 
+  @include respond(tab-port) {
+    width: 700px;
+  }
+
   @include respond(phone) {
     width: 500px;
   }
