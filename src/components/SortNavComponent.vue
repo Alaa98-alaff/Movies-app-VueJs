@@ -166,9 +166,8 @@ export default {
 
   @include respond(phone) {
     margin-top: 18px;
-    margin-left: 14px;
     font-size: 11px;
-    width: 650px;
+    width: 360px;
     height: 50px;
   }
 
