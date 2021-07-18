@@ -81,9 +81,9 @@ export default {
   margin-top: 105px;
 
   @include respond(phone) {
-    width: 365px;
-    margin-left: 5px;
-    font-size: 60%;
+    width: 335px;
+    margin-left: 20px;
+    font-size: 50%;
   }
 
   .view-all {
@@ -123,6 +123,10 @@ export default {
     margin: 0;
     padding: 0;
     margin-right: 15px;
+
+    @include respond(phone) {
+      margin-right: 7px;
+    }
   }
 
   .fa-arrow-up {
