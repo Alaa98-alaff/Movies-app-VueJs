@@ -158,7 +158,7 @@ export default {
 
     &:hover > .new-movie__title::after {
       opacity: 1;
-      //   transform: translate3d(0, 3.4em, 0);
+      transform: translate3d(0, 3.4em, 0);
 
       @include respond(phone) {
         opacity: 0;
