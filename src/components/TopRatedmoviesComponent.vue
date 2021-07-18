@@ -88,6 +88,12 @@ export default {
   width: 1000px;
   padding: 10px;
 
+  @include respond(tab-port) {
+    width: 550px;
+    font-size: 70%;
+    padding-bottom: 0;
+  }
+
   @include respond(phone) {
     width: 335px;
     font-size: 50%;
@@ -101,6 +107,10 @@ export default {
     color: $grey-color;
     cursor: pointer;
     font-size: 20px;
+
+    @include respond(tab-port) {
+      font-size: 18px;
+    }
 
     @include respond(phone) {
       font-size: 13px;
@@ -132,6 +142,10 @@ export default {
     padding: 0;
     margin-right: 15px;
 
+    @include respond(tab-port) {
+      margin-right: 8px;
+    }
+
     @include respond(phone) {
       margin-right: 7px;
     }
@@ -144,10 +158,13 @@ export default {
 
 .topRated-movies-container {
   display: flex;
-  //   margin-left: 175px;
   width: 1200px;
   justify-content: center;
   align-items: flex-start;
+
+  @include respond(tab-port) {
+    width: 700px;
+  }
 
   @include respond(phone) {
     width: 370px;
@@ -156,9 +173,15 @@ export default {
 
 .firstTop-movie {
   padding: 10px;
+
   &__img {
     width: 320px;
     height: 560px;
+
+    @include respond(tab-port) {
+      width: 185px;
+      height: 380px;
+    }
 
     @include respond(phone) {
       width: 150px;
@@ -175,6 +198,10 @@ export default {
   width: 700px;
   margin-bottom: 40px;
 
+  @include respond(tab-port) {
+    width: 250px;
+  }
+
   @include respond(phone) {
     width: 200px;
   }
@@ -185,15 +212,29 @@ export default {
   height: 270px;
   margin: 10px;
 
+  @include respond(tab-port) {
+    width: 110px;
+    height: 120px;
+    margin-left: 0px;
+    margin-bottom: 0;
+    margin-left: 0px;
+  }
+
   @include respond(phone) {
     width: 90px;
     height: 100px;
     margin-left: 0px;
+    margin-bottom: 10px;
   }
 
   &__img {
     width: 200px;
     height: 270px;
+
+    @include respond(tab-port) {
+      width: 110px;
+      height: 120px;
+    }
 
     @include respond(phone) {
       width: 90px;
