@@ -104,6 +104,14 @@ body {
   padding-top: $searched-margin-top;
   margin-right: $searched-margin-right;
   margin-left: $searched-margin-left;
+
+  @include respond(phone) {
+    justify-content: flex-start;
+    margin-left: 17px;
+    margin-right: 0px;
+    margin-top: -30px;
+    padding-top: 0px;
+  }
 }
 
 .searched-movie-card {
@@ -114,16 +122,29 @@ body {
   margin-right: 60px;
   cursor: pointer;
 
-  :hover > &__img {
-    opacity: 1;
-    transition: opacity 0.2s;
+  transition: all 300ms ease-in-out;
+  object-fit: cover;
+
+  &:hover,
+  &:focus {
+    transform: scale(0.98);
+  }
+
+  @include respond(phone) {
+    margin-right: 0px;
+    width: 130px;
+    height: 160px;
+    margin: 30px 20px;
   }
 
   &__img {
     height: 100%;
     width: 100%;
-    opacity: 0.95;
-    transition: opacity 0.5s;
+
+    @include respond(phone) {
+      width: 130px;
+      height: 160px;
+    }
   }
 
   .title-continer {
@@ -133,12 +154,23 @@ body {
       font-size: 15px;
       margin: 0;
       padding: 0;
+
+      @include respond(phone) {
+        font-size: 9.5px;
+        margin-top: -6px;
+        width: 130px;
+      }
     }
 
     &__year {
       color: #fff;
       margin: 0;
       padding: 0;
+
+      @include respond(phone) {
+        font-size: 7px;
+        color: rgb(175, 164, 164);
+      }
     }
   }
 }
