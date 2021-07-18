@@ -23,7 +23,6 @@ $silde-margin-left: 140px;
 $silde-margin-right: 140px;
 
 // MEDIA QUERY MANAGER
-
 // 1em = 16 px
 @mixin respond($breakpoint) {
   @if $breakpoint == phone {

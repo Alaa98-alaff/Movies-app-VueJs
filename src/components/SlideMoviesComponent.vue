@@ -80,6 +80,13 @@ export default defineComponent({
   &__img {
     width: 202px;
     height: 340px;
+    transition: all 300ms ease-in-out;
+    object-fit: cover;
+
+    &:hover,
+    &:focus {
+      transform: scale(0.98);
+    }
   }
 }
 

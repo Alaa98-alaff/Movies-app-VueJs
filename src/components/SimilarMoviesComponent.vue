@@ -16,7 +16,7 @@
             :alt="movie.title"
           />
           <p class="new-movie__title">
-            {{ movie.title.split(" ").slice(-3).join(" ") }}
+            {{ movie.title.split(" ").slice(-2).join(" ") }}
           </p>
         </div>
       </router-link>

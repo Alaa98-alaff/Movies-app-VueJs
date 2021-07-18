@@ -6,52 +6,53 @@
       alt=""
     />
     <HeaderComponent></HeaderComponent>
-    <main class="main-movie">
-      <div class="trial">
-        <img
-          class="trial__image"
-          :src="baseImgUrl + movieDetails.poster_path"
-          :alt="movieDetails.title"
-        />
-      </div>
+    <div class="main-container">
+      <main class="main-movie">
+        <div class="trial">
+          <img
+            class="trial__image"
+            :src="baseImgUrl + movieDetails.poster_path"
+            :alt="movieDetails.title"
+          />
+        </div>
 
-      <div class="titles">
-        <div class="titles-container">
-          <h1 class="titles__main-title">
-            {{ movieDetails.title }}
-          </h1>
-          <p class="titles__year">
-            {{ movieDetails.release_date?.split("-")[0] }}
-          </p>
-          <p class="titles__runtime">
-            {{ movieDetails.runtime }} min |
-            <span class="titles__category">
-              {{ movieDetails.genres?.map((gener) => gener.name).join(", ") }}
-            </span>
-          </p>
-          <div class="rating-container">
-            <i class="rating-container__star fas fa-star fa-2x"></i>
-            <p>
-              <strong class="rating-container__rate">{{
-                movieDetails.vote_average
-              }}</strong
-              >/ 10
+        <div class="titles">
+          <div class="titles-container">
+            <h1 class="titles__main-title">
+              {{ movieDetails.title }}
+            </h1>
+            <p class="titles__year">
+              {{ movieDetails.release_date?.split("-")[0] }}
             </p>
+            <p class="titles__runtime">
+              {{ movieDetails.runtime }} min |
+              <span class="titles__category">
+                {{ movieDetails.genres?.map((gener) => gener.name).join(", ") }}
+              </span>
+            </p>
+            <div class="rating-container">
+              <i class="rating-container__star fas fa-star fa-2x"></i>
+              <p>
+                <strong class="rating-container__rate">{{
+                  movieDetails.vote_average
+                }}</strong
+                >/ 10
+              </p>
 
-            <i class="rating-container__imdb fab fa-imdb fa-3x"></i>
+              <i class="rating-container__imdb fab fa-imdb fa-3x"></i>
+            </div>
+            <p class="titles__summary">
+              {{ movieDetails.overview?.split(" ").slice(-35).join(" ") }}
+            </p>
           </div>
-          <p class="titles__summary">
-            {{ movieDetails.overview?.split(" ").slice(-35).join(" ") }}
-          </p>
+          <div class="buttons">
+            <a :href="youtubeBaseUrl + trailVideoLink">
+              <button class="buttons__btn trial">Watch trial</button>
+            </a>
+          </div>
         </div>
-        <div class="buttons">
-          <a :href="youtubeBaseUrl + trailVideoLink">
-            <button class="buttons__btn trial">Watch trial</button>
-          </a>
-          <button class="buttons__btn move">Watch Movie</button>
-        </div>
-      </div>
-    </main>
+      </main>
+    </div>
     <NewMoviesComponent
       @newMovieRandomId="GetNewMovieRandomId"
     ></NewMoviesComponent>
@@ -143,17 +144,34 @@ export default {
   }
 }
 
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: $main-margin-right;
+  margin-left: $main-margin-left;
+
+  @include respond(phone) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
 .main-movie {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-right: $main-margin-right;
-  margin-left: $main-margin-left;
 }
 
 .trial {
   &__image {
     height: 400px;
+
+    @include respond(phone) {
+      height: 250px;
+      width: 150px;
+      margin-left: 90px;
+    }
   }
 }
 
@@ -165,12 +183,36 @@ export default {
   justify-content: space-between;
   margin-left: 40px;
 
-  p {
-    margin: 13px;
+  &__main-title {
+    @include respond(phone) {
+      width: 170px;
+      word-wrap: break-word;
+      font-size: 12.5px;
+    }
+  }
+
+  @include respond(phone) {
+    font-size: 53%;
+    height: 250px;
+    width: 250px;
+    margin-left: 15px;
+  }
+
+  &__runtime {
+    @include respond(phone) {
+      width: 175px;
+      word-wrap: break-word;
+    }
   }
 
   &__category {
     font-weight: 500;
+
+    @include respond(phone) {
+      font-size: 90%;
+      height: 300px;
+      margin: 0;
+    }
   }
 
   &__main-title {
@@ -179,6 +221,15 @@ export default {
 
   &__summary {
     word-wrap: break-word;
+    width: 475px;
+    height: 100px;
+
+    @include respond(phone) {
+      width: 155px;
+      height: 50px;
+      word-wrap: break-word;
+      margin: 0px;
+    }
   }
 }
 
@@ -188,8 +239,16 @@ export default {
   align-items: center;
   width: 170px;
 
+  @include respond(phone) {
+    width: 90px;
+  }
+
   &__rate {
     font-size: 25px;
+
+    @include respond(phone) {
+      font-size: 10px;
+    }
   }
 
   &__star {
@@ -206,11 +265,17 @@ export default {
   width: 440px;
 
   &__btn {
-    width: 210px;
+    width: 270px;
     height: 40px;
     border-radius: 20px;
     border-style: none;
     font-size: 17px;
+
+    @include respond(phone) {
+      width: 148px;
+      height: 30px;
+      font-size: 12px;
+    }
   }
 
   .trial {
