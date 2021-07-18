@@ -39,7 +39,9 @@ export default {
     let search = ref("");
 
     function searchMovie() {
-      routing.push(`/search/${search.value.split(" ").join("+")}`);
+      if (search.value !== "") {
+        routing.push(`/search/${search.value.split(" ").join("+")}`);
+      }
     }
 
     return { search, searchMovie };

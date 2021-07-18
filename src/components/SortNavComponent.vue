@@ -156,6 +156,12 @@ export default {
   margin-right: $silde-margin-right;
   height: 80px;
 
+  @include respond(phone) {
+    margin-left: 14px;
+    font-size: 11px;
+    width: 350px;
+  }
+
   &__type {
     color: #fff;
     transition: all 0.3s;
@@ -173,5 +179,9 @@ export default {
   font-weight: bolder;
   font-size: 25px;
   transition: all 0.03s;
+
+  @include respond(phone) {
+    font-size: 14px;
+  }
 }
 </style>

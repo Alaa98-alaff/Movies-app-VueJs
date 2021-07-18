@@ -67,7 +67,7 @@ export default defineComponent({
 .movie-card {
   width: 202px;
   height: 340px;
-  margin: 6px;
+  margin: 7.5px;
   cursor: pointer;
   opacity: 0.9;
   transition: opacity 0.4s;
