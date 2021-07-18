@@ -95,6 +95,11 @@ export default {
     margin-right: 10px;
     margin-left: 6px;
 
+    @include respond(tab-port) {
+      font-size: 90%;
+      margin: 8px;
+    }
+
     @include respond(phone) {
       font-size: 80%;
       margin: 4px;
@@ -108,6 +113,10 @@ export default {
 
     .fa-fire {
       color: #fff;
+
+      @include respond(tab-port) {
+        font-size: 20px;
+      }
 
       @include respond(phone) {
         font-size: 80%;
@@ -135,6 +144,11 @@ export default {
     text-align: center;
     padding: 5px;
 
+    @include respond(tab-port) {
+      width: 115px;
+      height: 85px;
+    }
+
     @include respond(phone) {
       width: 65px;
       height: 50px;
@@ -152,6 +166,12 @@ export default {
       transform: translate(-50%, -23%);
       transition: all 0.45s;
 
+      @include respond(tab-port) {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
       @include respond(phone) {
         top: 50%;
         left: 50%;
@@ -162,6 +182,10 @@ export default {
     &:hover > .new-movie__title::after {
       opacity: 1;
       transform: translate3d(0, 3.4em, 0);
+
+      @include respond(tab-port) {
+        opacity: 0;
+      }
 
       @include respond(phone) {
         opacity: 0;
@@ -176,6 +200,11 @@ export default {
       transform: translate(-50%, -60%);
       transition: all 0.5s;
       width: 100%;
+
+      @include respond(tab-port) {
+        font-size: 13px;
+        width: 100px;
+      }
 
       @include respond(phone) {
         font-size: 7px;
@@ -207,6 +236,12 @@ export default {
       border-radius: 8px;
       transition: all 0.5s;
       filter: brightness(60%);
+
+      @include respond(tab-port) {
+        width: 115px;
+        height: 75px;
+        filter: brightness(80%);
+      }
 
       @include respond(phone) {
         width: 70px;

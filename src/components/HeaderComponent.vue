@@ -58,6 +58,11 @@ export default {
   padding: 9px 16px;
   height: 90px;
 
+  @include respond(tab-port) {
+    height: 80px;
+    padding: 5px 15px;
+  }
+
   @include respond(phone) {
     height: 50px;
     padding: 0px 12px;
@@ -65,21 +70,16 @@ export default {
     padding-bottom: 0px;
   }
 
-  @include respond(tab-port) {
-    height: 80px;
-    padding: 5px 15px;
-  }
-
   &__logo {
     display: flex;
     margin: 0;
 
-    @include respond(phone) {
-      font-size: 22.5px;
-    }
-
     @include respond(tab-port) {
       font-size: 28px;
+    }
+
+    @include respond(phone) {
+      font-size: 22.5px;
     }
 
     &:hover {
@@ -115,20 +115,13 @@ export default {
     font-size: 22px;
     margin-top: 2px;
 
-    @include respond(phone) {
-      font-size: 13px;
-    }
-
     @include respond(tab-port) {
       font-size: 18px;
     }
-  }
 
-  @include respond(phone) {
-    height: 14px;
-    padding: 10px 9px;
-    padding-left: 7px;
-    padding-top: 8px;
+    @include respond(phone) {
+      font-size: 13px;
+    }
   }
 
   @include respond(tab-port) {
@@ -137,19 +130,26 @@ export default {
     padding-left: 15px;
     padding-top: 15px;
   }
+
+  @include respond(phone) {
+    height: 14px;
+    padding: 10px 9px;
+    padding-left: 7px;
+    padding-top: 8px;
+  }
 }
 
 .search-container:hover > .search-input {
   width: 250px;
 
-  @include respond(phone) {
-    width: 55px;
-    font-size: 6.5px;
-  }
-
   @include respond(tab-port) {
     width: 80px;
     font-size: 8.5px;
+  }
+
+  @include respond(phone) {
+    width: 55px;
+    font-size: 6.5px;
   }
 }
 
