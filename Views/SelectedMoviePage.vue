@@ -162,6 +162,12 @@ body {
   margin-left: $crew-margin-left;
   margin-right: $crew-margin-right;
   margin-top: $crew-margin-top;
+
+  @include respond(phone) {
+    margin-left: 35px;
+    margin-right: 25px;
+  }
+
   .cast {
     &__title {
       font-weight: 500;
@@ -176,26 +182,48 @@ body {
       flex-wrap: wrap;
       margin-top: -32px;
 
+      @include respond(phone) {
+        justify-content: center;
+        width: 340px;
+      }
+
       .cast-card {
         margin-top: 25px;
-        word-wrap: break-word;
         width: 200px;
+
+        @include respond(phone) {
+          width: 100px;
+          margin-right: 10px;
+        }
 
         &__img {
           height: 300px;
           width: 200px;
+
+          @include respond(phone) {
+            height: 125px;
+            width: 80px;
+          }
         }
 
         &__name {
           color: #fff;
           word-wrap: break-word;
           margin: 0;
+
+          @include respond(phone) {
+            font-size: 10px;
+          }
         }
 
         &__character {
           color: rgb(158, 145, 145);
           font-size: 12px;
           margin: 0;
+
+          @include respond(phone) {
+            font-size: 7px;
+          }
         }
       }
     }

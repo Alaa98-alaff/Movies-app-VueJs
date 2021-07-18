@@ -175,7 +175,7 @@ export default {
       width: 100%;
 
       @include respond(phone) {
-        font-size: 6px;
+        font-size: 7px;
         top: 70%;
         width: 65px;
       }
@@ -208,6 +208,7 @@ export default {
       @include respond(phone) {
         width: 70px;
         height: 45px;
+        filter: brightness(80%);
       }
     }
 
