@@ -35,8 +35,8 @@ export default defineComponent({
   data: () => ({
     // carousel settings
     settings: {
-      itemsToShow: 1,
-      snapAlign: "center",
+      itemsToShow: 3,
+      snapAlign: "start",
     },
     // breakpoints are mobile first
     // any settings not specified will fallback to the carousel settings
@@ -62,6 +62,12 @@ export default defineComponent({
   margin-left: $silde-margin-left;
   margin-right: $silde-margin-right;
   margin-bottom: 70px;
+
+  @include respond(phone) {
+    margin-left: 27px;
+    margin-right: 30px;
+    height: 190px;
+  }
 }
 
 .movie-card {
@@ -71,6 +77,10 @@ export default defineComponent({
   cursor: pointer;
   opacity: 0.9;
   transition: opacity 0.4s;
+
+  @include respond(phone) {
+    height: 185px;
+  }
 
   &:hover {
     opacity: 1;
@@ -82,6 +92,11 @@ export default defineComponent({
     height: 340px;
     transition: all 300ms ease-in-out;
     object-fit: cover;
+
+    @include respond(phone) {
+      width: 91.45px;
+      height: 190px;
+    }
 
     &:hover,
     &:focus {
@@ -95,8 +110,26 @@ export default defineComponent({
   height: 50px;
   border-radius: 50%;
 
+  @include respond(phone) {
+    width: 35px;
+    height: 35px;
+    margin-left: 10px;
+  }
+
   &:active {
     background-color: rgb(12, 22, 66);
+  }
+}
+
+.carousel__pagination {
+  @include respond(phone) {
+    margin-right: 38px;
+  }
+}
+
+.carousel__pagination-button {
+  @include respond(phone) {
+    margin: 3px;
   }
 }
 </style>
