@@ -81,10 +81,20 @@ export default {
   margin-top: -20px;
   padding-bottom: 50px;
 
+  @include respond(phone) {
+    margin-left: 16px;
+    width: 325px;
+  }
+
   &__title {
     color: #fff;
     font-weight: 500;
     margin-right: 10px;
+
+    @include respond(phone) {
+      font-size: 80%;
+      margin: 4px;
+    }
   }
 
   .new-movies-title {
@@ -94,6 +104,10 @@ export default {
 
     .fa-fire {
       color: #fff;
+
+      @include respond(phone) {
+        font-size: 80%;
+      }
     }
   }
 }
@@ -116,6 +130,10 @@ export default {
     position: relative;
     text-align: center;
 
+    @include respond(phone) {
+      width: 40px;
+      height: 60px;
+    }
 
     &:hover > .new-movie__img {
       opacity: 1;
@@ -128,11 +146,21 @@ export default {
       left: 50%;
       transform: translate(-50%, -22%);
       transition: all 0.45s;
+
+      @include respond(phone) {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
 
     &:hover > .new-movie__title::after {
       opacity: 1;
-      transform: translate3d(0, 3.4em, 0);
+      //   transform: translate3d(0, 3.4em, 0);
+
+      @include respond(phone) {
+        opacity: 0;
+      }
     }
 
     &__title {
@@ -143,6 +171,12 @@ export default {
       transform: translate(-50%, -60%);
       transition: all 0.5s;
       width: 100%;
+
+      @include respond(phone) {
+        font-size: 38%;
+        top: 70%;
+        // width: 200px;
+      }
 
       &::after {
         content: "";
@@ -155,6 +189,10 @@ export default {
         opacity: 0;
         border-radius: 20px;
         // transition: opacity 300ms, transsform 100ms;
+
+        @include respond(phone) {
+          font-size: 50%;
+        }
       }
     }
 
@@ -164,6 +202,11 @@ export default {
       border-radius: 8px;
       transition: all 0.5s;
       filter: brightness(60%);
+
+      @include respond(phone) {
+        width: 70px;
+        height: 45px;
+      }
     }
 
     &__highlight {
