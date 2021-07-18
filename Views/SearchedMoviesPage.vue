@@ -105,11 +105,9 @@ body {
   display: flex;
   justify-content: center;
   flex-flow: wrap;
-  padding-top: $searched-margin-top;
 
   @include respond(phone) {
     width: 500px;
-    margin-top: -28px;
   }
 }
 
@@ -133,7 +131,10 @@ body {
     margin-right: 0px;
     width: 130px;
     height: 160px;
-    margin: 30px 20px;
+    margin-top: 10px;
+    margin-bottom: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   &__img {

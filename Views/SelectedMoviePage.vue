@@ -175,7 +175,8 @@ body {
     &__title {
       font-weight: 500;
       color: #fff;
-      margin-top: 0;
+      margin-left: 10px;
+      margin-bottom: 24px;
     }
 
     &__cast-cards {
@@ -187,7 +188,7 @@ body {
       margin-top: -32px;
 
       @include respond(phone) {
-        justify-content: center;
+        justify-content: flex-start;
         width: 340px;
       }
 
@@ -197,7 +198,9 @@ body {
 
         @include respond(phone) {
           width: 100px;
-          margin-right: 10px;
+          height: 125px;
+          width: 80px;
+          margin: 10px 10px 60px 10px;
         }
 
         &__img {
@@ -216,7 +219,7 @@ body {
           margin: 0;
 
           @include respond(phone) {
-            font-size: 10px;
+            font-size: 8px;
           }
         }
 

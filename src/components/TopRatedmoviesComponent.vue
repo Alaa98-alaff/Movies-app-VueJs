@@ -1,46 +1,48 @@
 <template>
-  <div class="topRated-title">
-    <div class="titleBox">
-      <h1 class="titleBox__title">Top Rated Movies</h1>
-      <i class="fas fa-arrow-up fa-2x"></i>
-    </div>
-    <router-link class="router-link" to="/top-rated-movies">
-      <div class="view-all">
-        <p class="view-all__title">View All</p>
-        <i class="fas fa-arrow-right"></i>
+  <main class="topRated-container">
+    <div class="topRated-title">
+      <div class="titleBox">
+        <h1 class="titleBox__title">Top Rated Movies</h1>
+        <i class="fas fa-arrow-up fa-2x"></i>
       </div>
-    </router-link>
-  </div>
-  <main class="topRated-movies-main">
-    <div class="topRated-movies-container">
-      <router-link
-        :to="'/search/' + firstTopMovie.title + '/' + firstTopMovie.id"
-      >
-        <div class="firstTop-movie">
-          <img
-            :src="baseImgUrl + firstTopMovie.poster_path"
-            alt=""
-            class="firstTop-movie__img"
-          />
+      <router-link class="router-link" to="/top-rated-movies">
+        <div class="view-all">
+          <p class="view-all__title">View All</p>
+          <i class="fas fa-arrow-right"></i>
         </div>
       </router-link>
-      <div class="topRated-movies-cards">
-        <div v-for="movie in topRatedMovies" :key="movie.id">
-          <router-link :to="'/search/' + movie.title + '/' + movie.id">
-            <div
-              class="topRated-movie-card"
-              @click="getSelectedMovieID(movie.id)"
-            >
-              <img
-                class="topRated-movie-card__img"
-                :src="baseImgUrl + movie.poster_path"
-                :alt="movie.title"
-              />
-            </div>
-          </router-link>
+    </div>
+    <main class="topRated-movies-main">
+      <div class="topRated-movies-container">
+        <router-link
+          :to="'/search/' + firstTopMovie.title + '/' + firstTopMovie.id"
+        >
+          <div class="firstTop-movie">
+            <img
+              :src="baseImgUrl + firstTopMovie.poster_path"
+              alt=""
+              class="firstTop-movie__img"
+            />
+          </div>
+        </router-link>
+        <div class="topRated-movies-cards">
+          <div v-for="movie in topRatedMovies" :key="movie.id">
+            <router-link :to="'/search/' + movie.title + '/' + movie.id">
+              <div
+                class="topRated-movie-card"
+                @click="getSelectedMovieID(movie.id)"
+              >
+                <img
+                  class="topRated-movie-card__img"
+                  :src="baseImgUrl + movie.poster_path"
+                  :alt="movie.title"
+                />
+              </div>
+            </router-link>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   </main>
 </template>
 
@@ -72,18 +74,24 @@ export default {
 </script>
 
 <style lang="scss">
+.topRated-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .topRated-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 172px;
-  width: 995px;
-  margin-top: 105px;
+  width: 1000px;
+  padding: 10px;
 
   @include respond(phone) {
     width: 335px;
-    margin-left: 20px;
     font-size: 50%;
+    padding-bottom: 0;
   }
 
   .view-all {
@@ -134,25 +142,20 @@ export default {
   }
 }
 
-.topRated-movies-main {
-  //   flex-direction: column;
-  //   display: flex;
-  //   align-items: center;
-  //   margin-left: 30px;
-}
-
 .topRated-movies-container {
   display: flex;
-  margin-left: 175px;
+  //   margin-left: 175px;
+  width: 1200px;
+  justify-content: center;
+  align-items: flex-start;
 
   @include respond(phone) {
-    margin-left: 15px;
+    width: 370px;
   }
 }
 
 .firstTop-movie {
-  margin-top: 10px;
-
+  padding: 10px;
   &__img {
     width: 320px;
     height: 560px;
@@ -171,6 +174,10 @@ export default {
   flex-flow: wrap;
   width: 700px;
   margin-bottom: 40px;
+
+  @include respond(phone) {
+    width: 200px;
+  }
 }
 
 .topRated-movie-card {
