@@ -60,8 +60,9 @@ export default {
 
   @include respond(phone) {
     height: 50px;
-    padding: 7px 12px;
-    margin-bottom: 5px;
+    padding: 0px 12px;
+    padding-top: 7px;
+    padding-bottom: 0px;
   }
 
   &__logo {

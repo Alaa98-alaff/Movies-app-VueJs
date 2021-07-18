@@ -86,6 +86,7 @@ export default {
   flex-direction: column;
   margin-top: -20px;
   padding-bottom: 50px;
+  //   width: 800px;
   align-items: flex-start;
 
   &__title {
@@ -146,9 +147,9 @@ export default {
     }
 
     &:hover > .new-movie__title {
-      top: 22%;
+      top: 23%;
       left: 50%;
-      transform: translate(-50%, -22%);
+      transform: translate(-50%, -23%);
       transition: all 0.45s;
 
       @include respond(phone) {
@@ -201,7 +202,7 @@ export default {
     }
 
     &__img {
-      width: 145px;
+      width: 155px;
       height: 90px;
       border-radius: 8px;
       transition: all 0.5s;

@@ -1,62 +1,64 @@
 <template>
-  <nav class="sort-nav">
-    <p
-      tabindex="0"
-      class="sort-nav__type"
-      :class="sortTitle === 'Populars' ? 'active' : ''"
-      @click="findPopularMovies"
-    >
-      Popular
-    </p>
-    <p
-      tabindex="0"
-      class="sort-nav__type"
-      :class="sortTitle === 'Horror' ? 'active' : ''"
-      @click="findHorrorMovies"
-    >
-      Horror
-    </p>
-    <p
-      tabindex="0"
-      class="sort-nav__type"
-      :class="sortTitle === 'Action' ? 'active' : ''"
-      @click="findActionMovies"
-    >
-      Action
-    </p>
-    <p
-      tabindex="0"
-      class="sort-nav__type"
-      :class="sortTitle === 'Comedy' ? 'active' : ''"
-      @click="findComedyMovies"
-    >
-      Comedy
-    </p>
-    <p
-      tabindex="0"
-      class="sort-nav__type"
-      :class="sortTitle === 'Drama' ? 'active' : ''"
-      @click="findDramaMovies"
-    >
-      Drama
-    </p>
-    <p
-      tabindex="0"
-      class="sort-nav__type"
-      :class="sortTitle === 'Romance' ? 'active' : ''"
-      @click="findRomanceMovies"
-    >
-      Romance
-    </p>
-    <p
-      tabindex="0"
-      class="sort-nav__type"
-      :class="sortTitle === 'Family' ? 'active' : ''"
-      @click="findFamilyMovies"
-    >
-      Family
-    </p>
-  </nav>
+  <section class="sort-nav-section">
+    <nav class="sort-nav">
+      <p
+        tabindex="0"
+        class="sort-nav__type"
+        :class="sortTitle === 'Populars' ? 'active' : ''"
+        @click="findPopularMovies"
+      >
+        Popular
+      </p>
+      <p
+        tabindex="0"
+        class="sort-nav__type"
+        :class="sortTitle === 'Horror' ? 'active' : ''"
+        @click="findHorrorMovies"
+      >
+        Horror
+      </p>
+      <p
+        tabindex="0"
+        class="sort-nav__type"
+        :class="sortTitle === 'Action' ? 'active' : ''"
+        @click="findActionMovies"
+      >
+        Action
+      </p>
+      <p
+        tabindex="0"
+        class="sort-nav__type"
+        :class="sortTitle === 'Comedy' ? 'active' : ''"
+        @click="findComedyMovies"
+      >
+        Comedy
+      </p>
+      <p
+        tabindex="0"
+        class="sort-nav__type"
+        :class="sortTitle === 'Drama' ? 'active' : ''"
+        @click="findDramaMovies"
+      >
+        Drama
+      </p>
+      <p
+        tabindex="0"
+        class="sort-nav__type"
+        :class="sortTitle === 'Romance' ? 'active' : ''"
+        @click="findRomanceMovies"
+      >
+        Romance
+      </p>
+      <p
+        tabindex="0"
+        class="sort-nav__type"
+        :class="sortTitle === 'Family' ? 'active' : ''"
+        @click="findFamilyMovies"
+      >
+        Family
+      </p>
+    </nav>
+  </section>
 
   <SlideMoviesComponent
     :sortedMovies="movieArr"
@@ -146,20 +148,28 @@ export default {
 </script>
 
 <style lang="scss">
+.sort-nav-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .sort-nav {
-  margin-top: 10px;
+  width: 1250px;
+  margin-top: 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin-left: $silde-margin-left;
-  margin-right: $silde-margin-right;
   height: 80px;
+  font-size: 19px;
 
   @include respond(phone) {
+    margin-top: 18px;
     margin-left: 14px;
     font-size: 11px;
-    width: 350px;
+    width: 650px;
+    height: 50px;
   }
 
   &__type {

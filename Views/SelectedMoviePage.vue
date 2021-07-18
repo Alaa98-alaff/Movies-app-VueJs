@@ -159,13 +159,16 @@ body {
 }
 
 .cast-section {
-  margin-left: $crew-margin-left;
-  margin-right: $crew-margin-right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // margin-left: $crew-margin-left;
+  // margin-right: $crew-margin-right;
   margin-top: $crew-margin-top;
 
   @include respond(phone) {
-    margin-left: 35px;
-    margin-right: 25px;
+    // margin-left: 35px;
+    // margin-right: 25px;
   }
 
   .cast {
@@ -176,6 +179,7 @@ body {
     }
 
     &__cast-cards {
+      width: 900px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;

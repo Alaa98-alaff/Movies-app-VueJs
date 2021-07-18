@@ -1,27 +1,29 @@
 <template>
-  <section class="new-movies-container">
-    <p class="new-movies-container__title">
-      {{ similarMoviesObject.length !== 0 ? "Similar Movies" : "" }}
-    </p>
-    <div class="new-movies">
-      <router-link
-        v-for="movie in similarMoviesObject"
-        :key="movie.id"
-        :to="/search/ + movie.title + '/' + movie.id"
-      >
-        <div class="new-movie">
-          <img
-            class="new-movie__img"
-            :src="baseImgUrl + movie.backdrop_path"
-            :alt="movie.title"
-          />
-          <p class="new-movie__title">
-            {{ movie.title.split(" ").slice(-2).join(" ") }}
-          </p>
-        </div>
-      </router-link>
-    </div>
-  </section>
+  <main class="new-movies-main">
+    <section class="new-movies-container">
+      <p class="new-movies-container__title">
+        {{ similarMoviesObject.length !== 0 ? "Similar Movies" : "" }}
+      </p>
+      <div class="new-movies">
+        <router-link
+          v-for="movie in similarMoviesObject"
+          :key="movie.id"
+          :to="/search/ + movie.title + '/' + movie.id"
+        >
+          <div class="new-movie">
+            <img
+              class="new-movie__img"
+              :src="baseImgUrl + movie.backdrop_path"
+              :alt="movie.title"
+            />
+            <p class="new-movie__title">
+              {{ movie.title.split(" ").slice(-2).join(" ") }}
+            </p>
+          </div>
+        </router-link>
+      </div>
+    </section>
+  </main>
 </template>
 
 <script>

@@ -95,22 +95,21 @@ body {
 .searhed-movies-main {
   height: 100%;
   background-color: $main-background-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .searched-movies-cards {
+  width: 1000px;
   display: flex;
   justify-content: center;
   flex-flow: wrap;
   padding-top: $searched-margin-top;
-  margin-right: $searched-margin-right;
-  margin-left: $searched-margin-left;
 
   @include respond(phone) {
-    justify-content: flex-start;
-    margin-left: 17px;
-    margin-right: 0px;
-    margin-top: -30px;
-    padding-top: 0px;
+    width: 500px;
+    margin-top: -28px;
   }
 }
 
@@ -143,7 +142,7 @@ body {
 
     @include respond(phone) {
       width: 130px;
-      height: 160px;
+      height: 180px;
     }
   }
 
