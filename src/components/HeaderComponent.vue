@@ -58,12 +58,18 @@ export default {
   padding: 9px 16px;
   height: 90px;
 
+  @include respond(phone) {
+    height: 50px;
+    padding: 7px 12px;
+    margin-bottom: 5px;
+  }
+
   &__logo {
     display: flex;
     margin: 0;
 
     @include respond(phone) {
-      font-size: 25px;
+      font-size: 22.5px;
     }
 
     &:hover {
@@ -100,13 +106,13 @@ export default {
     margin-top: 2px;
 
     @include respond(phone) {
-      font-size: 17px;
+      font-size: 14px;
     }
   }
 
   @include respond(phone) {
-    height: 32px;
-    padding: 8px 15px;
+    height: 14px;
+    padding: 9px 8px;
   }
 }
 
@@ -115,7 +121,7 @@ export default {
 
   @include respond(phone) {
     width: 55px;
-    font-size: 10px;
+    font-size: 6.5px;
   }
 }
 
