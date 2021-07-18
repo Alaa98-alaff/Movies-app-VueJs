@@ -162,21 +162,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  // margin-left: $crew-margin-left;
-  // margin-right: $crew-margin-right;
   margin-top: $crew-margin-top;
-
-  @include respond(phone) {
-    // margin-left: 35px;
-    // margin-right: 25px;
-  }
 
   .cast {
     &__title {
       font-weight: 500;
       color: #fff;
-      margin-left: 10px;
+      margin-left: 30px;
       margin-bottom: 24px;
+      font-size: 25px;
     }
 
     &__cast-cards {
@@ -187,8 +181,13 @@ body {
       flex-wrap: wrap;
       margin-top: -32px;
 
+      @include respond(tab-port) {
+        justify-content: center;
+        width: 600px;
+      }
+
       @include respond(phone) {
-        justify-content: flex-start;
+        justify-content: center;
         width: 340px;
       }
 
@@ -206,6 +205,11 @@ body {
         &__img {
           height: 300px;
           width: 200px;
+
+          @include respond(tab-port) {
+            height: 170px;
+            width: 140px;
+          }
 
           @include respond(phone) {
             height: 125px;
