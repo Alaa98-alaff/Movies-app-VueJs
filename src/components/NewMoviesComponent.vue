@@ -1,28 +1,30 @@
 <template>
-  <section class="new-movies-container">
-    <div class="new-movies-title">
-      <p class="new-movies-container__title">New Movies</p>
-      <i class="fas fa-fire fa-lg"></i>
-    </div>
-    <div class="new-movies">
-      <router-link
-        v-for="movie in newMoviesObj"
-        :key="movie.id"
-        :to="/search/ + movie.title + '/' + movie.id"
-      >
-        <div class="new-movie">
-          <img
-            class="new-movie__img"
-            :src="movieImgUrl + movie.backdrop_path"
-            :alt="movie.title"
-          />
-          <p class="new-movie__title">
-            {{ movie.title.split(" ").slice(-3).join(" ") }}
-          </p>
-        </div>
-      </router-link>
-    </div>
-  </section>
+  <main class="new-movies-main">
+    <section class="new-movies-container">
+      <div class="new-movies-title">
+        <p class="new-movies-container__title">New Movies</p>
+        <i class="fas fa-fire fa-lg"></i>
+      </div>
+      <div class="new-movies">
+        <router-link
+          v-for="movie in newMoviesObj"
+          :key="movie.id"
+          :to="/search/ + movie.title + '/' + movie.id"
+        >
+          <div class="new-movie">
+            <img
+              class="new-movie__img"
+              :src="movieImgUrl + movie.backdrop_path"
+              :alt="movie.title"
+            />
+            <p class="new-movie__title">
+              {{ movie.title.split(" ").slice(-3).join(" ") }}
+            </p>
+          </div>
+        </router-link>
+      </div>
+    </section>
+  </main>
 </template>
 
 <script>
@@ -73,29 +75,28 @@ export default {
 </script>
 
 <style lang="scss">
+.new-movies-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .new-movies-container {
   display: flex;
   flex-direction: column;
-  margin-right: $main-margin-right;
-  margin-left: $main-margin-left;
   margin-top: -20px;
   padding-bottom: 50px;
-
-  @include respond(phone) {
-    margin-left: 25px;
-    width: 325px;
-  }
+  align-items: flex-start;
 
   &__title {
     color: #fff;
     font-weight: 500;
     margin-right: 10px;
+    margin-left: 6px;
 
     @include respond(phone) {
       font-size: 80%;
       margin: 4px;
-      margin-left: -15px;
-      margin-bottom: -1.5px;
     }
   }
 
@@ -117,7 +118,7 @@ export default {
 .new-movies {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: -5px;
 
@@ -131,10 +132,11 @@ export default {
     align-items: flex-end;
     position: relative;
     text-align: center;
+    padding: 5px;
 
     @include respond(phone) {
-      width: 30px;
-      height: 60px;
+      width: 65px;
+      height: 50px;
     }
 
     &:hover > .new-movie__img {
