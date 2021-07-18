@@ -170,7 +170,7 @@ export default {
     @include respond(phone) {
       height: 250px;
       width: 150px;
-      margin-left: 90px;
+      margin-left: 10px;
     }
   }
 }
@@ -183,6 +183,13 @@ export default {
   justify-content: space-between;
   margin-left: 40px;
 
+  @include respond(phone) {
+    font-size: 53%;
+    height: 250px;
+    width: 170px;
+    margin-left: 15px;
+  }
+
   &__main-title {
     @include respond(phone) {
       width: 170px;
@@ -191,17 +198,17 @@ export default {
     }
   }
 
-  @include respond(phone) {
-    font-size: 53%;
-    height: 250px;
-    width: 250px;
-    margin-left: 15px;
-  }
-
   &__runtime {
     @include respond(phone) {
       width: 175px;
       word-wrap: break-word;
+    }
+  }
+
+  &__year {
+    @include respond(phone) {
+      width: 170px;
+      margin-right: 0;
     }
   }
 
@@ -263,6 +270,10 @@ export default {
   display: flex;
   justify-content: space-between;
   width: 440px;
+
+  @include respond(phone) {
+    width: 170px;
+  }
 
   &__btn {
     width: 270px;
