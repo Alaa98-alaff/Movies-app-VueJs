@@ -80,6 +80,12 @@ export default {
   width: 995px;
   margin-top: 105px;
 
+  @include respond(phone) {
+    width: 365px;
+    margin-left: 5px;
+    font-size: 60%;
+  }
+
   .view-all {
     display: flex;
     align-items: center;
@@ -87,6 +93,10 @@ export default {
     color: $grey-color;
     cursor: pointer;
     font-size: 20px;
+
+    @include respond(phone) {
+      font-size: 13px;
+    }
 
     &:hover {
       color: rgb(192, 79, 79);
@@ -121,14 +131,19 @@ export default {
 }
 
 .topRated-movies-main {
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  margin-left: 30px;
+  //   flex-direction: column;
+  //   display: flex;
+  //   align-items: center;
+  //   margin-left: 30px;
 }
 
 .topRated-movies-container {
   display: flex;
+  margin-left: 175px;
+
+  @include respond(phone) {
+    margin-left: 15px;
+  }
 }
 
 .firstTop-movie {
@@ -137,6 +152,11 @@ export default {
   &__img {
     width: 320px;
     height: 560px;
+
+    @include respond(phone) {
+      width: 150px;
+      height: 350px;
+    }
   }
 }
 
@@ -154,9 +174,20 @@ export default {
   height: 270px;
   margin: 10px;
 
+  @include respond(phone) {
+    width: 90px;
+    height: 100px;
+    margin-left: 0px;
+  }
+
   &__img {
     width: 200px;
     height: 270px;
+
+    @include respond(phone) {
+      width: 90px;
+      height: 110px;
+    }
   }
 }
 
