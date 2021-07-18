@@ -129,7 +129,8 @@ export default defineComponent({
 
 .carousel__pagination-button {
   @include respond(phone) {
-    margin: 3px;
+    margin: 2.5px;
+    padding: 0;
   }
 }
 </style>
