@@ -120,7 +120,7 @@ body {
   height: 320px;
   background-color: #fff;
   margin-bottom: 110px;
-  margin-right: 60px;
+  margin: 20px;
   cursor: pointer;
 
   transition: all 300ms ease-in-out;
