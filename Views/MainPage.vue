@@ -202,6 +202,7 @@ export default {
     @include respond(phone) {
       width: 175px;
       word-wrap: break-word;
+      margin-bottom: 0;
     }
   }
 
@@ -209,6 +210,7 @@ export default {
     @include respond(phone) {
       width: 170px;
       margin-right: 0;
+      margin-top: 1px;
     }
   }
 
