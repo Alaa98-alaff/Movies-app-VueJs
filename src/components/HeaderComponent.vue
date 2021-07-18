@@ -65,12 +65,21 @@ export default {
     padding-bottom: 0px;
   }
 
+  @include respond(tab-port) {
+    height: 80px;
+    padding: 5px 15px;
+  }
+
   &__logo {
     display: flex;
     margin: 0;
 
     @include respond(phone) {
       font-size: 22.5px;
+    }
+
+    @include respond(tab-port) {
+      font-size: 28px;
     }
 
     &:hover {
@@ -91,7 +100,7 @@ export default {
   background-color: $logo-red-color;
   height: 38px;
   border-radius: 50px;
-  padding: 13px 20px;
+  padding: 11px 18px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,13 +116,26 @@ export default {
     margin-top: 2px;
 
     @include respond(phone) {
-      font-size: 14px;
+      font-size: 13px;
+    }
+
+    @include respond(tab-port) {
+      font-size: 18px;
     }
   }
 
   @include respond(phone) {
     height: 14px;
-    padding: 9px 8px;
+    padding: 10px 9px;
+    padding-left: 7px;
+    padding-top: 8px;
+  }
+
+  @include respond(tab-port) {
+    height: 20px;
+    padding: 13px 12px;
+    padding-left: 15px;
+    padding-top: 15px;
   }
 }
 
@@ -123,6 +145,11 @@ export default {
   @include respond(phone) {
     width: 55px;
     font-size: 6.5px;
+  }
+
+  @include respond(tab-port) {
+    width: 80px;
+    font-size: 8.5px;
   }
 }
 
