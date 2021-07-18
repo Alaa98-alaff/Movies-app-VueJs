@@ -151,6 +151,11 @@ export default {
   margin-right: $main-margin-right;
   margin-left: $main-margin-left;
 
+  @include respond(tab-port) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
   @include respond(phone) {
     margin-right: 0;
     margin-left: 0;
@@ -168,6 +173,12 @@ export default {
   &__image {
     height: 400px;
 
+    @include respond(tab-port) {
+      height: 280px;
+      width: 150px;
+      margin-left: 30px;
+    }
+
     @include respond(phone) {
       height: 250px;
       width: 150px;
@@ -184,6 +195,13 @@ export default {
   justify-content: space-between;
   margin-left: 40px;
 
+  @include respond(tab-port) {
+    font-size: 70%;
+    height: 280px;
+    width: 250px;
+    margin-left: 20px;
+  }
+
   @include respond(phone) {
     font-size: 53%;
     height: 250px;
@@ -192,6 +210,12 @@ export default {
   }
 
   &__main-title {
+    @include respond(tab-port) {
+      width: 190px;
+      word-wrap: break-word;
+      font-size: 15.5px;
+    }
+
     @include respond(phone) {
       width: 170px;
       word-wrap: break-word;
@@ -200,6 +224,12 @@ export default {
   }
 
   &__runtime {
+    @include respond(tab-port) {
+      width: 270px;
+      word-wrap: break-word;
+      margin-bottom: 0;
+    }
+
     @include respond(phone) {
       width: 175px;
       word-wrap: break-word;
@@ -208,6 +238,12 @@ export default {
   }
 
   &__year {
+    @include respond(tab-port) {
+      width: 185px;
+      margin-right: 0;
+      margin-top: 1px;
+    }
+
     @include respond(phone) {
       width: 170px;
       margin-right: 0;
@@ -217,6 +253,12 @@ export default {
 
   &__category {
     font-weight: 500;
+
+    @include respond(tab-port) {
+      font-size: 90%;
+      height: 300px;
+      margin: 0;
+    }
 
     @include respond(phone) {
       font-size: 90%;
@@ -234,6 +276,13 @@ export default {
     width: 475px;
     height: 100px;
 
+    @include respond(tab-port) {
+      width: 270px;
+      height: 50px;
+      word-wrap: break-word;
+      margin: 0px;
+    }
+
     @include respond(phone) {
       width: 155px;
       height: 50px;
@@ -249,12 +298,20 @@ export default {
   align-items: center;
   width: 170px;
 
+  @include respond(tab-port) {
+    width: 140px;
+  }
+
   @include respond(phone) {
     width: 90px;
   }
 
   &__rate {
     font-size: 25px;
+
+    @include respond(tab-port) {
+      font-size: 18px;
+    }
 
     @include respond(phone) {
       font-size: 10px;
@@ -269,10 +326,15 @@ export default {
     color: rgb(201, 190, 93);
   }
 }
+
 .buttons {
   display: flex;
   justify-content: space-between;
   width: 440px;
+
+  @include respond(tab-port) {
+    width: 190px;
+  }
 
   @include respond(phone) {
     width: 170px;
@@ -284,6 +346,12 @@ export default {
     border-radius: 20px;
     border-style: none;
     font-size: 17px;
+
+    @include respond(tab-port) {
+      width: 175px;
+      height: 35px;
+      font-size: 14px;
+    }
 
     @include respond(phone) {
       width: 148px;
