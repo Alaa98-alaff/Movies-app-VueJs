@@ -2,8 +2,5 @@ node_modules
 .DS_Store
 dist
 dist-ssr
-.env
-.env.example
-.env.local
-.env.staging
+
 *.local
