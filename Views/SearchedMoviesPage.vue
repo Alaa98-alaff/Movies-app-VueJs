@@ -108,10 +108,12 @@ body {
 
   @include respond(tab-port) {
     width: 700px;
+    margin-top: 18px;
   }
 
   @include respond(phone) {
     width: 500px;
+    margin-top: 15px;
   }
 }
 
@@ -137,7 +139,7 @@ body {
     width: 130px;
     height: 160px;
     margin-top: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 63px;
     margin-left: 20px;
     margin-right: 20px;
   }

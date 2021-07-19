@@ -167,6 +167,14 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+
+  @include respond(tab-port) {
+    margin-top: 28px;
+  }
+
+  @include respond(phone) {
+    margin-top: 25px;
+  }
 }
 
 .trial {
