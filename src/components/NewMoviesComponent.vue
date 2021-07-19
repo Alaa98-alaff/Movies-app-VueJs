@@ -150,7 +150,7 @@ export default {
     }
 
     @include respond(phone) {
-      width: 65px;
+      width: 62.5px;
       height: 50px;
     }
 
