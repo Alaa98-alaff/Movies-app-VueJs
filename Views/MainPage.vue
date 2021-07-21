@@ -101,7 +101,6 @@ export default {
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           trailVideoLink.value = data.videos?.results[0].key;
           movieDetails.value = data;
         });

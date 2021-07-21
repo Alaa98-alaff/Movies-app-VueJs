@@ -54,7 +54,6 @@ export default {
           for (let i = randomOne; i < randomOne + 5; i++) {
             newMoviesObj.value.push(data.results[i]);
             newMovieRandomID.value = data.results[i].id;
-            console.log(newMovieRandomID.value);
           }
           emit(
             "newMovieRandomId",

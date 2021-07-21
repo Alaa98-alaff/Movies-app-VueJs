@@ -45,7 +45,6 @@ export default {
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           if (data.results.length != 0) {
             similarMoviesObject.value = data.results.slice(0, 5);
           }
