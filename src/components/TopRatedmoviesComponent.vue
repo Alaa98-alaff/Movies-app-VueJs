@@ -177,6 +177,12 @@ export default {
   &__img {
     width: 320px;
     height: 560px;
+    transition: all 300ms ease-in-out;
+
+    &:hover,
+    &:focus {
+      transform: scale(0.98);
+    }
 
     @include respond(tab-port) {
       width: 185px;
@@ -230,6 +236,12 @@ export default {
   &__img {
     width: 200px;
     height: 270px;
+    transition: all 300ms ease-in-out;
+
+    &:hover,
+    &:focus {
+      transform: scale(0.98);
+    }
 
     @include respond(tab-port) {
       width: 110px;
