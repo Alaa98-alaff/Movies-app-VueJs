@@ -82,8 +82,8 @@
 
 <script>
 import { ref, watch } from "vue";
-import HeaderComponent from "../src/components/HeaderComponent.vue";
-import SimilarMoviesComponent from "../src/components/SimilarMoviesComponent.vue";
+import HeaderComponent from "../components/HeaderComponent.vue";
+import SimilarMoviesComponent from "../components/SimilarMoviesComponent.vue";
 
 export default {
   props: ["name", "id"],

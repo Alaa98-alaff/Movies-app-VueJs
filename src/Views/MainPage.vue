@@ -64,10 +64,10 @@
 <script>
 import { ref, watch } from "vue";
 
-import HeaderComponent from "../src/components/HeaderComponent.vue";
-import NewMoviesComponent from "../src/components/NewMoviesComponent.vue";
-import SortNavComponent from "../src/components/SortNavComponent.vue";
-import TopRatedmoviesComponent from "../src/components/TopRatedmoviesComponent.vue";
+import HeaderComponent from "../components/HeaderComponent.vue";
+import NewMoviesComponent from "../components/NewMoviesComponent.vue";
+import SortNavComponent from "../components/SortNavComponent.vue";
+import TopRatedmoviesComponent from "../components/TopRatedmoviesComponent.vue";
 
 export default {
   props: ["id"],

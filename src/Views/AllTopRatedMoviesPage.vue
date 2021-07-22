@@ -30,7 +30,7 @@
 
 <script>
 import { ref } from "vue";
-import HeaderComponent from "../src/components/HeaderComponent.vue";
+import HeaderComponent from "../components/HeaderComponent.vue";
 
 export default {
   components: { HeaderComponent },
