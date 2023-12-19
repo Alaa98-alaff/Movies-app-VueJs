@@ -98,9 +98,9 @@ export default {
 
 .search-container {
   background-color: $logo-red-color;
-  height: 38px;
+  height: 32px;
   border-radius: 50px;
-  padding: 11px 18px;
+  padding: 8px 14px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -112,7 +112,7 @@ export default {
     4px 4px 6px 0 rgba(136, 34, 34, 0.2);
 
   .fa-search {
-    font-size: 22px;
+    font-size: 18px;
     margin-top: 2px;
 
     @include respond(tab-port) {

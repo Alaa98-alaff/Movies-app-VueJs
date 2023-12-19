@@ -36,9 +36,9 @@
             </p>
             <div class="rating-container">
               <i class="rating-container__star fas fa-star fa-2x"></i>
-              <p>
+              <p v-if="selectedMovieDetails?.vote_average">
                 <strong class="rating-container__rate">{{
-                  selectedMovieDetails.vote_average
+                  +selectedMovieDetails.vote_average.toFixed(1)
                 }}</strong
                 >/ 10
               </p>
@@ -113,8 +113,10 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           selectedMovieDetails.value = data;
-          castArr.value = data.credits.cast.slice(0, 8);
-          trailVideoLink.value = data.videos.results[0].key;
+          castArr.value = data.credits.cast
+            .slice(0, 8)
+            .filter((data) => data?.profile_path);
+          trailVideoLink.value = data?.videos?.results?.[0]?.key;
         });
     }
     getSelectedMovieDetails(movieID.value);

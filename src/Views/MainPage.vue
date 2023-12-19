@@ -32,9 +32,9 @@
             </p>
             <div class="rating-container">
               <i class="rating-container__star fas fa-star fa-2x"></i>
-              <p>
+              <p v-if="movieDetails?.vote_average">
                 <strong class="rating-container__rate">{{
-                  movieDetails.vote_average
+                  +movieDetails?.vote_average?.toFixed(1)
                 }}</strong
                 >/ 10
               </p>
@@ -93,25 +93,41 @@ export default {
     GetNewMovieRandomId();
 
     // watch and update the movie when movie id change
+
     async function getMovieInfoWithID(id) {
-      await fetch(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${
-          import.meta.env.VITE_API_KEY
-        }&append_to_response=images,videos`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          trailVideoLink.value = data.videos?.results[0].key;
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/${id}?api_key=${
+            import.meta.env.VITE_API_KEY
+          }&append_to_response=images,videos`
+        );
+        const data = await response.json();
+
+        if (data?.videos?.results?.[0]) {
+          trailVideoLink.value = data.videos.results[0].key;
           movieDetails.value = data;
-        });
+        } else {
+          // Move this line inside the else block
+          searchForAnotherMovie();
+        }
+      } catch (error) {
+        console.error("Error fetching movie information:", error);
+      }
+    }
+
+    function generateRandomId() {
+      return Math.floor(Math.random() * 1000) + 1;
+    }
+
+    async function searchForAnotherMovie() {
+      const newRandomId = generateRandomId();
+      await getMovieInfoWithID(newRandomId);
     }
 
     watch(
       () => randomId.value,
       (newValue) => getMovieInfoWithID(newValue)
     );
-
-    getMovieInfoWithID(randomId.value);
 
     return {
       movieDetails,
